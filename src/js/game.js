@@ -5,7 +5,12 @@ function randomInteger(min, max) {
     let rand = min - 0.5 + Math.random() * (max - min + 1);
     return Math.round(rand);
 }
-
+/*
+function randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+}
+*/
 
 function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
@@ -95,7 +100,7 @@ function intervals() {
 
         })
     }, fps);
-    ints.enemy = setInterval(() => {
+    /*ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
 
@@ -161,9 +166,10 @@ function intervals() {
                         enemy.parentNode.removeChild(enemy);
                     } else {
                         enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
+                        enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-                case 'left':
+               /!* case 'left':
                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
                     } else {
@@ -183,7 +189,7 @@ function intervals() {
                     } else {
                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
                     }
-                    break;
+                    break;*!/
             }
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
@@ -193,23 +199,23 @@ function intervals() {
             // }
 
         })
-    }, fps);
+    }, fps);*/
     ints.generateEnemy = setInterval(() => {
 
-        let direction = randomInteger(1, 4);
+        let direction = randomInteger(1, 3);
 
         switch (direction) {
-            case 1: //Top
+            /*case 1: //Top
                 gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg); 
                 top: ${gameZone.getBoundingClientRect().height - player.h}px; 
                 left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
-                break;
+                break;*/
             case 2: //Left
-                gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-180deg); 
-                top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px; 
+                gameZone.innerHTML += `<div class="enemy" style=" 
+                top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h) - 200}px; 
                 left: ${gameZone.getBoundingClientRect().width - player.w}px;" direction="right"></div>`;
                 break;
-            case 3: //Bottom
+            /*case 3: //Bottom
                 gameZone.innerHTML += `<div class="enemy" 
                 style="transform: rotate(90deg); 
                 top: 0; 
@@ -220,7 +226,7 @@ function intervals() {
                 gameZone.innerHTML += `<div class="enemy" 
                 style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px; 
                 left: 0;" direction="left"></div>`;
-                break;
+                break;*/
         }
 
 
@@ -350,7 +356,7 @@ let gameZone = document.querySelector('.game-zone'),
         tiltAngleX: 12 * 0.3,
     },
     bulletSpeed = 10,
-    enemyGenerateSpeed = 1000,
+    enemyGenerateSpeed = 100,
     ints = {
         run: false,
         bullet: false,
