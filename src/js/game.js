@@ -97,11 +97,17 @@ function intervals() {
 function addBullet() {
 
     switch (player.side) {
+        case 1:
+            gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            break;
         /*case 1:
             gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${(player.x + (player.w / 2)) - 7}px; top: ${player.y - 16}px;"></div>`;
             break;*/
         case 2:
             gameZone.innerHTML += `<div class="bullet" direction="right" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            break;
+        case 3:
+            gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
             break;
         /*case 3:
             gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w / 2 - 5}px; top: ${player.y + player.h}px;"></div>`;
@@ -109,6 +115,9 @@ function addBullet() {
         case 4:
             gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x}px; top: ${player.y + player.h / 2 - 10}px;"></div>`;
             break;*/
+        case 4:
+            gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            break;
     }
 
     player.el = document.querySelector('.player');
