@@ -100,7 +100,7 @@ function intervals() {
 
         })
     }, fps);
-    /*ints.enemy = setInterval(() => {
+    ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
 
@@ -169,7 +169,7 @@ function intervals() {
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-               /!* case 'left':
+               /* case 'left':
                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
                     } else {
@@ -189,7 +189,7 @@ function intervals() {
                     } else {
                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
                     }
-                    break;*!/
+                    break;*/
             }
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
@@ -199,10 +199,10 @@ function intervals() {
             // }
 
         })
-    }, fps);*/
+    }, fps);
     ints.generateEnemy = setInterval(() => {
 
-        let direction = randomInteger(1, 3);
+        let direction = randomInteger(1, 4);
 
         switch (direction) {
             /*case 1: //Top
@@ -210,10 +210,25 @@ function intervals() {
                 top: ${gameZone.getBoundingClientRect().height - player.h}px; 
                 left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
                 break;*/
+            case 1: //Left
+                gameZone.innerHTML += `<div class="enemy" style=" 
+                top: ${gameZone.getBoundingClientRect().height - player.h - 600}px; 
+                left: ${gameZone.getBoundingClientRect().width - player.w - 600}px;" direction="right"></div>`;
+                break;
             case 2: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h) - 200}px; 
-                left: ${gameZone.getBoundingClientRect().width - player.w}px;" direction="right"></div>`;
+                top: ${gameZone.getBoundingClientRect().height - player.h - 500}px; 
+                left: ${gameZone.getBoundingClientRect().width - player.w - 450}px;" direction="right"></div>`;
+                break;
+            case 3: //Left
+                gameZone.innerHTML += `<div class="enemy" style=" 
+                top: ${gameZone.getBoundingClientRect().height - player.h - 400}px; 
+                left: ${gameZone.getBoundingClientRect().width - player.w - 250}px;" direction="right"></div>`;
+                break;
+            case 4: //Left
+                gameZone.innerHTML += `<div class="enemy" style=" 
+                top: ${gameZone.getBoundingClientRect().height - player.h - 300}px; 
+                left: ${gameZone.getBoundingClientRect().width - player.w - 100}px;" direction="right"></div>`;
                 break;
             /*case 3: //Bottom
                 gameZone.innerHTML += `<div class="enemy" 
@@ -356,7 +371,7 @@ let gameZone = document.querySelector('.game-zone'),
         tiltAngleX: 12 * 0.3,
     },
     bulletSpeed = 10,
-    enemyGenerateSpeed = 100,
+    enemyGenerateSpeed = 1000,
     ints = {
         run: false,
         bullet: false,
