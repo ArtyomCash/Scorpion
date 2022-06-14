@@ -53,24 +53,24 @@ function intervals() {
     ints.bullet = setInterval(() => {
         let bullets = document.querySelectorAll('.bullet');
         bullets.forEach((bullet) => {
-            let direction = bullet.getAttribute('direction');
+            // let direction = bullet.getAttribute('direction');
 
-            switch (direction) {
-                case 'top':
+            // switch (direction) {
+                /*case 'top':
                     if (bullet.getBoundingClientRect().top < 0) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.top = bullet.getBoundingClientRect().top - bulletSpeed + 'px';
                     }
-                    break;
-                case 'right':
+                    break;*/
+                // case 'right':
                     if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
                     }
-                    break;
-                case 'bottom':
+                    // break;
+                /*case 'bottom':
                     if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
@@ -83,8 +83,8 @@ function intervals() {
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left - bulletSpeed + 'px';
                     }
-                    break;
-            }
+                    break;*/
+            // }
 
         })
     }, fps);
@@ -97,18 +97,18 @@ function intervals() {
 function addBullet() {
 
     switch (player.side) {
-        case 1:
+        /*case 1:
             gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${(player.x + (player.w / 2)) - 7}px; top: ${player.y - 16}px;"></div>`;
-            break;
+            break;*/
         case 2:
             gameZone.innerHTML += `<div class="bullet" direction="right" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
             break;
-        case 3:
+        /*case 3:
             gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w / 2 - 5}px; top: ${player.y + player.h}px;"></div>`;
             break;
         case 4:
             gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x}px; top: ${player.y + player.h / 2 - 10}px;"></div>`;
-            break;
+            break;*/
     }
 
     player.el = document.querySelector('.player');
