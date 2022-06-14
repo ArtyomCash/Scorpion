@@ -52,6 +52,7 @@ function intervals() {
     }, fps);
     ints.bullet = setInterval(() => {
         let bullets = document.querySelectorAll('.bullet');
+        // bullets.style.left = '500px';
         bullets.forEach((bullet) => {
             // let direction = bullet.getAttribute('direction');
 
@@ -64,7 +65,7 @@ function intervals() {
                     }
                     break;*/
                 // case 'right':
-                    if (bullet.getBoundingClientRect().right + 100 > gameZone.getBoundingClientRect().width) {
+                    if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
@@ -99,16 +100,16 @@ function addBullet() {
 
     switch (player.side) {
         case 1:
-            gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${player.x + player.w - 75}px; top: ${player.y -7}px;"></div>`;
             break;
         /*case 1:
             gameZone.innerHTML += `<div class="bullet" direction="top" style="left: ${(player.x + (player.w / 2)) - 7}px; top: ${player.y - 16}px;"></div>`;
             break;*/
         case 2:
-            gameZone.innerHTML += `<div class="bullet" direction="right" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            gameZone.innerHTML += `<div class="bullet" direction="right" style="left: ${player.x + player.w -75}px; top: ${player.y -7}px;"></div>`;
             break;
         case 3:
-            gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w -75}px; top: ${player.y -7}px;"></div>`;
             break;
         /*case 3:
             gameZone.innerHTML += `<div class="bullet" direction="bottom" style="left: ${player.x + player.w / 2 - 5}px; top: ${player.y + player.h}px;"></div>`;
@@ -117,7 +118,7 @@ function addBullet() {
             gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x}px; top: ${player.y + player.h / 2 - 10}px;"></div>`;
             break;*/
         case 4:
-            gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x + player.w}px; top: ${player.y + 30}px;"></div>`;
+            gameZone.innerHTML += `<div class="bullet" direction="left" style="left: ${player.x + player.w -75}px; top: ${player.y -7}px;"></div>`;
             break;
     }
 
@@ -128,38 +129,18 @@ function controllers() {
     document.addEventListener('keydown', (e) => {
         switch (e.keyCode) {
             case 38: // Top
-                player.el.style.backgroundImage = `url(${player.sprites.top})`;
-                player.el.style.transform = `rotate(1deg)`;
-                player.el.style.height = `78px`;
-                player.el.style.width = `97px`;
-                player.el.style.backgroundSize = `cover`;
                 player.run = true;
                 player.side = 1;
                 break;
             case 40: // Bottom
-                player.el.style.backgroundImage = `url(${player.sprites.bottom})`;
-                player.el.style.transform = `rotate(1deg)`;
-                player.el.style.height = `78px`;
-                player.el.style.width = `97px`;
-                player.el.style.backgroundSize = `cover`;
                 player.run = true;
                 player.side = 3;
                 break;
             case 39: // Right
-                player.el.style.backgroundImage = `url(${player.sprites.right})`;
-                player.el.style.transform = `rotate(1deg)`;
-                player.el.style.height = `78px`;
-                player.el.style.width = `97px`;
-                player.el.style.backgroundSize = `cover`;
                 player.run = true;
                 player.side = 2;
                 break;
             case 37: //Left
-                player.el.style.backgroundImage = `url(${player.sprites.left})`;
-                player.el.style.transform = `rotate(1deg)`;
-                player.el.style.height = `78px`;
-                player.el.style.width = `97px`;
-                player.el.style.backgroundSize = `cover`;
                 player.run = true;
                 player.side = 4;
                 break;
@@ -167,7 +148,7 @@ function controllers() {
                 addBullet();
                 break;
                 // -------------------------------
-            case 87: // Top
+           /* case 87: // Top
                 player.el.style.backgroundImage = `url(${player.sprites.top})`;
                 player.run = true;
                 player.side = 1;
@@ -186,7 +167,7 @@ function controllers() {
                 player.el.style.backgroundImage = `url(${player.sprites.left})`;
                 player.run = true;
                 player.side = 4;
-                break;
+                break;*/
         }
     });
 

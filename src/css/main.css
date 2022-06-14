@@ -18,11 +18,10 @@
     background-image: url(../sprites/scorpion-right_2shadow.png);
     background-repeat: no-repeat;
     background-size: cover;
+    transform: rotate(12deg);
 }
 .bullet {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 16px;
     height: 16px;
     background-image: url(../sprites/bullet.png);
