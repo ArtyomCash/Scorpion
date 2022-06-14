@@ -64,7 +64,7 @@ function intervals() {
                     }
                     break;*/
                 // case 'right':
-                    if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
+                    if (bullet.getBoundingClientRect().right + 100 > gameZone.getBoundingClientRect().width) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
