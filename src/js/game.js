@@ -68,6 +68,7 @@ function intervals() {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
+                        bullet.style.top = bullet.getBoundingClientRect().top + 6 - bulletSpeed + 'px';
                     }
                     // break;
                 /*case 'bottom':
