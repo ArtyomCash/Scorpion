@@ -1,0 +1,27 @@
+.game-zone {
+    position: relative;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    /*background-image: url(../sprites/back.png);*/
+    background-image: url(../sprites/roads.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+.player {
+    position: absolute;
+    width: 97px;
+    height: 77px;
+    background-image: url(../sprites/scorpion-right_2shadow.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bullet {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(../sprites/bullet.png);
+    background-repeat: no-repeat;
+}
