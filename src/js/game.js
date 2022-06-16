@@ -59,7 +59,7 @@ function intervals() {
                     break;
             }
         }
-    }, fps);
+    },  10);
     ints.bullet = setInterval(() => {
         let bullets = document.querySelectorAll('.bullet');
         // bullets.style.left = '500px';
@@ -103,7 +103,7 @@ function intervals() {
     ints.scorpionClaw = setInterval(() => {
         let scorpionClaw = document.querySelectorAll('.scorpion-claw');
         // bullets.style.left = '500px';
-        scorpionClaw.forEach((claw) => {
+        scorpionClaw.forEach(claw => {
             // let direction = bullet.getAttribute('direction');
 
             // switch (direction) {
@@ -118,8 +118,25 @@ function intervals() {
             if (claw.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
                 claw.parentNode.removeChild(claw);
             } else {
-                claw.style.left = claw.getBoundingClientRect().left + clawSpeed + 'px';
-                claw.style.top = claw.getBoundingClientRect().top + 6 - bulletSpeed + 'px';
+                // claw.style.left = claw.getBoundingClientRect().left + clawSpeed + 'px';
+                // claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
+                // setTimeout(claw.style.left = '400px', 5000);
+                // setTimeout(claw.style.top = '400px', 5000);
+                // setTimeout(console.log('qqqqqq'), 10);
+
+                // claw.parentNode.removeChild(claw);
+                claw.style.left = claw.getBoundingClientRect().left + clawSpeed +'px';
+                claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
+
+                /*let ttt = setTimeout(alert('gjkeerer'), 3000);
+                clearTimeout(ttt);*/
+                // console.log(claw.style.left);
+                // claw.style.top = '400px';
+                // setTimeout(claw.parentNode.removeChild(claw), 5000);
+                // console.log('claw>>>', setTimeout(claw.parentNode.removeChild(claw), 5000));
+                // claw.style.left = setInterval(claw.getBoundingClientRect, 10000) + 'px';
+                // claw.style.top = setInterval(claw.getBoundingClientRect, 10000) + 'px';
+
             }
             // break;
             /*case 'bottom':
@@ -139,10 +156,26 @@ function intervals() {
             // }
 
         })
-    }, fps);
+
+    }, 200);
+    ints.scorpionClawTrue = setInterval(() => {
+        let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
+        scorpionClawStop.forEach(clawStop => {
+            if (ints.scorpionClaw) {
+                clawStop.style.left = player.x + '500px';
+                clawStop.style.top = player.y + '500px';
+                console.log('остановить');
+            } else {
+                scorpionClawStop.parentNode.removeChild(scorpionClawStop);
+            }
+        });
+
+    }, 5000);
+
+
     ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
-        enemies.forEach((enemy) => {
+        enemies.forEach(enemy => {
 
             const playerPosTop = player.el.getBoundingClientRect().top,
                 playerPosRight = player.el.getBoundingClientRect().right,
@@ -160,14 +193,15 @@ function intervals() {
                 playerPosRight > enemyPosLeft &&
                 playerPosLeft < enemyPosRight
             ) {
-                next();
+                // next();
+                console.log('wwwwwwww');
                 //alert('Столкновение')
             }
 
 
             let bullets = document.querySelectorAll('.bullet');
 
-            bullets.forEach((bullet) => {
+            bullets.forEach(bullet => {
 
                 let direction = bullet.getAttribute('direction');
 
@@ -180,7 +214,7 @@ function intervals() {
                     ) {
                         enemy.parentNode.removeChild(enemy);
                         bullet.parentNode.removeChild(bullet);
-                        points += 1;
+                        // points += 1;
                         document.querySelector('.inner-points').innerText = points;
                     }
                 } else {
@@ -191,7 +225,7 @@ function intervals() {
                     ) {
                         enemy.parentNode.removeChild(enemy);
                         bullet.parentNode.removeChild(bullet);
-                        points += 1;
+                        // points += 1;
                         document.querySelector('.inner-points').innerText = points;
                     }
                 }
@@ -357,16 +391,16 @@ function addBullet() {
 function addScorpionClaw() {
     switch (player.side) {
         case 1:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 19}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
             break;
         case 2:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 19}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
             break;
         case 3:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 19}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
             break;
         case 4:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 19}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
             break;
     }
     player.el = document.querySelector('.player');
@@ -464,12 +498,13 @@ let gameZone = document.querySelector('.game-zone'),
         tiltAngleX: 12 * 0.3,
     },
     bulletSpeed = 10,
-    clawSpeed = 1,
+    clawSpeed = 10,
     enemyGenerateSpeed = 1000,
     ints = {
         run: false,
         bullet: false,
         scorpionClaw: false,
+        scorpionClawTrue: true,
     };
 
 game();
