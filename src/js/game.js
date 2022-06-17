@@ -161,13 +161,24 @@ function intervals() {
     ints.scorpionClawTrue = setInterval(() => {
         let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
         scorpionClawStop.forEach(clawStop => {
-            if (ints.scorpionClaw) {
-                clawStop.style.left = player.x + '500px';
-                clawStop.style.top = player.y + '500px';
-                console.log('остановить');
+            if (ints.scorpionClaw && clawStop.getBoundingClientRect().x === 400) {
+                console.log('стоп');
+                clawStop.parentNode.removeChild(clawStop);
+                if (clawStop.style.left === '350px' && clawStop.style.top === '350px') {
+                    clawStop.parentNode.removeChild(clawStop);
+                    console.log('очистка');
+                }
             } else {
-                scorpionClawStop.parentNode.removeChild(scorpionClawStop);
+                // scorpionClawStop.parentNode.removeChild(scorpionClawStop);
+                clawStop.style.left = player.x + '300px';
+                clawStop.style.top = player.y + '300px';
+                clawStop.style.display = 'none';
+                console.log('сначала');
             }
+            /*else if (clawStop.getBoundingClientRect().x > 400) {
+                scorpionClawStop.parentNode.removeChild(scorpionClawStop);
+                console.log('остановить');
+            }*/
         });
 
     }, 5000);
@@ -391,16 +402,16 @@ function addBullet() {
 function addScorpionClaw() {
     switch (player.side) {
         case 1:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
             break;
         case 2:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
             break;
         case 3:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
             break;
         case 4:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 7}px; top: ${player.y}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
             break;
     }
     player.el = document.querySelector('.player');
