@@ -161,24 +161,10 @@ function intervals() {
     ints.scorpionClawTrue = setInterval(() => {
         let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
         scorpionClawStop.forEach(clawStop => {
-            if (ints.scorpionClaw && clawStop.getBoundingClientRect().x === 400) {
+            if (ints.scorpionClaw) {
                 console.log('стоп');
                 clawStop.parentNode.removeChild(clawStop);
-                if (clawStop.style.left === '350px' && clawStop.style.top === '350px') {
-                    clawStop.parentNode.removeChild(clawStop);
-                    console.log('очистка');
-                }
-            } else {
-                // scorpionClawStop.parentNode.removeChild(scorpionClawStop);
-                clawStop.style.left = player.x + '300px';
-                clawStop.style.top = player.y + '300px';
-                clawStop.style.display = 'none';
-                console.log('сначала');
             }
-            /*else if (clawStop.getBoundingClientRect().x > 400) {
-                scorpionClawStop.parentNode.removeChild(scorpionClawStop);
-                console.log('остановить');
-            }*/
         });
 
     }, 5000);
@@ -205,7 +191,7 @@ function intervals() {
                 playerPosLeft < enemyPosRight
             ) {
                 // next();
-                console.log('wwwwwwww');
+                console.log('Столкновение');
                 //alert('Столкновение')
             }
 
