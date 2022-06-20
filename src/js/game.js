@@ -162,7 +162,6 @@ function intervals() {
         let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
         scorpionClawStop.forEach(clawStop => {
             if (ints.scorpionClaw) {
-                console.log('стоп');
                 clawStop.parentNode.removeChild(clawStop);
             }
         });
