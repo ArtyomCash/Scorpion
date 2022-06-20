@@ -25,7 +25,8 @@ function intervals() {
     ints.run = setInterval(() => {
         if (player.run) {
             switch (player.side) {
-                case 1: // Top
+                // в верху и влева не работает
+                case 1: // Top - работает
                     if (player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25) {
                         player.y -= player.tiltAngleY;
                         player.el.style.top = `${player.y}px`;
@@ -33,7 +34,7 @@ function intervals() {
                         player.el.style.left = `${player.x}px`;
                     }
                     break;
-                case 3: // Bottom
+                case 3: // Bottom работает
                     if (player.y < gameZone.getBoundingClientRect().bottom - player.h - 25 && player.x > - 10) {
                         player.y += player.tiltAngleY;
                         player.el.style.top = `${player.y}px`;
@@ -41,16 +42,16 @@ function intervals() {
                         player.el.style.left = `${player.x}px`;
                     }
                     break;
-                case 2: // Right
-                    if (player.x < gameZone.getBoundingClientRect().right - player.w -25 && player.y > - 10) {
+                case 2: // Right - работает
+                    if (player.x < gameZone.getBoundingClientRect().right - player.w -25 && player.y > - 10 && player.y < gameZone.getBoundingClientRect().bottom - player.h - 25 && player.x > - 10) {
                         player.x += player.tiltAngleX;
                         player.el.style.left = `${player.x}px`;
                         player.y += player.tiltAngleY;
                         player.el.style.top = `${player.y}px`;
                     }
                     break;
-                case 4: // Left=
-                    if (player.x > + 10 && player.y < gameZone.getBoundingClientRect().bottom - player.h - 25) {
+                case 4: // Left - работает
+                    if (player.x > + 10 && player.y < gameZone.getBoundingClientRect().bottom - player.h - 25 && player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25 ) {
                         player.x -= player.tiltAngleX;
                         player.el.style.left = `${player.x}px`;
                         player.y -= player.tiltAngleY;
@@ -168,8 +169,8 @@ function intervals() {
 
     }, 5000);
 
-
-    ints.enemy = setInterval(() => {
+    // описание появления врагов
+    /*ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach(enemy => {
 
@@ -272,7 +273,7 @@ function intervals() {
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-               /* case 'left':
+               /!* case 'left':
                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
                     } else {
@@ -292,7 +293,7 @@ function intervals() {
                     } else {
                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
                     }
-                    break;*/
+                    break;*!/
             }
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
@@ -308,11 +309,11 @@ function intervals() {
         let direction = randomInteger(1, 4);
 
         switch (direction) {
-            /*case 1: //Top
+            /!*case 1: //Top
                 gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg); 
                 top: ${gameZone.getBoundingClientRect().height - player.h}px; 
                 left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
-                break;*/
+                break;*!/
             case 1: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
                 top: ${gameZone.getBoundingClientRect().height - player.h - 600}px; 
@@ -333,7 +334,7 @@ function intervals() {
                 top: ${gameZone.getBoundingClientRect().height - player.h - 300}px; 
                 left: ${gameZone.getBoundingClientRect().width - player.w - 100}px;" direction="right"></div>`;
                 break;
-            /*case 3: //Bottom
+            /!*case 3: //Bottom
                 gameZone.innerHTML += `<div class="enemy" 
                 style="transform: rotate(90deg); 
                 top: 0; 
@@ -344,12 +345,12 @@ function intervals() {
                 gameZone.innerHTML += `<div class="enemy" 
                 style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px; 
                 left: 0;" direction="left"></div>`;
-                break;*/
+                break;*!/
         }
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);
+    }, enemyGenerateSpeed);*/
 }
 
 /*
