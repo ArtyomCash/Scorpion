@@ -14,6 +14,7 @@ function randomInteger(min, max) {
 
 function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
+    gameZone.innerHTML += `<div class="tree"></div>`;
     player.el = document.querySelector('.player');
 }
 
@@ -56,6 +57,8 @@ function intervals() {
                         player.el.style.left = `${player.x}px`;
                         player.y -= player.tiltAngleY;
                         player.el.style.top = `${player.y}px`;
+                       /* console.log('Y лево ==', player.y);
+                        console.log('X лево ==', player.x);*/
                     }
                     break;
             }
@@ -170,7 +173,7 @@ function intervals() {
     }, 5000);
 
     // описание появления врагов
-    /*ints.enemy = setInterval(() => {
+    ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach(enemy => {
 
@@ -273,7 +276,7 @@ function intervals() {
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-               /!* case 'left':
+               /* case 'left':
                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
                     } else {
@@ -293,7 +296,7 @@ function intervals() {
                     } else {
                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
                     }
-                    break;*!/
+                    break;*/
             }
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
@@ -304,7 +307,7 @@ function intervals() {
 
         })
     }, fps);
-    ints.generateEnemy = setInterval(() => {
+    /*ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
@@ -351,6 +354,75 @@ function intervals() {
 
         player.el = document.querySelector('.player');
     }, enemyGenerateSpeed);*/
+
+    // деревья -------------------
+    ints.treePlanting = setInterval(() => {
+        let trees = document.querySelectorAll('.tree');
+
+        trees.forEach(tree => {
+            const playerPosTop = player.el.getBoundingClientRect().top,
+                playerPosRight = player.el.getBoundingClientRect().right,
+                playerPosBottom = player.el.getBoundingClientRect().bottom,
+                playerPosLeft = player.el.getBoundingClientRect().left,
+                treePosTop = tree.getBoundingClientRect().top,
+                treePosRight = tree.getBoundingClientRect().right,
+                treePosBottom = tree.getBoundingClientRect().bottom,
+                treePosLeft = tree.getBoundingClientRect().left;
+
+            if (
+                playerPosTop < treePosBottom &&
+                playerPosBottom > treePosTop &&
+                playerPosRight > treePosLeft &&
+                playerPosLeft < treePosRight
+            ) {
+                // next();
+                console.log('Дерево');
+                // player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25
+
+                //alert('Столкновение')
+                // clearInterval(ints.run);
+                // intervals();
+                /*if (!clearInterval(ints.run)) {
+                    // setInterval(ints.run, 5000);
+                    console.log('запустил');
+                    game();
+                }*/
+                /*player.y = player.el.style.top;
+                player.x = player.el.style.left;*/
+                /*player.el.style.top = `${player.y}px`;
+                player.el.style.left = `${player.x}px`;*/
+
+
+
+               /* player.y -= player.tiltAngleY;
+                player.el.style.top = `${player.y}px`;
+                player.x += player.tiltAngleX;
+                player.el.style.left = `${player.x}px`;*/
+            }
+        })
+
+    }, fps);
+        /*let trees = document.querySelectorAll('.tree');
+        trees.forEach(tree => {
+            // top: ${gameZone.getBoundingClientRect().height - player.h}px;
+            tree.style.left = tree.getBoundingClientRect().left + 200 + 'px';
+            tree.style.top = tree.getBoundingClientRect().top + + 100 + 'px';
+
+        });*/
+
+    /*ints.treePlanting = setInterval(()=> {
+        // let trees = document.querySelectorAll('.tree');
+
+        /!*trees.forEach(tree => {
+            tree.style.left = tree.getBoundingClientRect().left + 'px';
+            tree.style.top = tree.getBoundingClientRect().top + 'px';
+
+        });
+*!/
+        gameZone.innerHTML += `<div class="tree" style=" 
+                top: ${gameZone.getBoundingClientRect().height - player.h}px; 
+                left: ${gameZone.getBoundingClientRect().width - player.w}px;"></div>`;
+    }, 5000)*/
 }
 
 /*
@@ -484,8 +556,8 @@ let gameZone = document.querySelector('.game-zone'),
             left: 'src/sprites/scorpion-right_2shadow.png',
         },
         el: false,
-        x: 500,
-        y: 400,
+        x: 100,
+        y: 100,
         // step: 2,
         run: false,
         side: 1, //1 (top), 2 (right), 3 (bottom), 4 (left),
@@ -502,6 +574,7 @@ let gameZone = document.querySelector('.game-zone'),
         bullet: false,
         scorpionClaw: false,
         scorpionClawTrue: true,
+        treePlanting: true,
     };
 
 game();
