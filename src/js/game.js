@@ -377,10 +377,39 @@ function intervals() {
             ) {
                 // next();
                 console.log('Дерево');
-                // player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25
-
-                //alert('Столкновение')
+                console.log('Y', player.y);
+                console.log('X', player.x);
+                tree.parentNode.removeChild(tree);
                 // clearInterval(ints.run);
+// -------
+               /* if (ints.run) {
+                    console.log('стоп');
+
+                }*/
+// --------
+               /* clearInterval(ints.run);
+                intervals();*/
+
+
+                // clearInterval(ints.run.style.left = player.x);
+
+                // player.x = 100;
+                // console.log('X', player.x === player.el.style.left + tree.style.left);
+                // console.log('X', player.x = player.el.style.left - tree.style.left);
+
+                // console.log('Y', player.y = player.el.style.top - tree.style.top);
+                // console.log('Y', player.y === player.el.style.top + tree.style.top);
+                // player.y = 100;
+                // player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25
+                // player.x;
+                // player.y;
+                //alert('Столкновение')
+                /*if (!clearInterval(ints.run)) {
+                    player.x = 100;
+                    player.y = 100;
+                }*/
+
+                // setInterval(ints.run, 5000);
                 // intervals();
                 /*if (!clearInterval(ints.run)) {
                     // setInterval(ints.run, 5000);
