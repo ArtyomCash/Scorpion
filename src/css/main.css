@@ -54,3 +54,20 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.tree-right {
+    /*position: absolute;*/
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+.tree-right::before {
+    position: absolute;
+    content: '';
+    top: -98px;
+    left: -64px;
+    width: 186px;
+    height: 194px;
+    background-image: url(../sprites/tree.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
