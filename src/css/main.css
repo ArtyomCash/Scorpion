@@ -28,6 +28,13 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.enemy-bullet {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-image: url(../sprites/bullet.png);
+    background-repeat: no-repeat;
+}
 .scorpion-claw {
     position: absolute;
     width: 36px;
