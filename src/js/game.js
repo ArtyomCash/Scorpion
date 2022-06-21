@@ -376,52 +376,32 @@ function intervals() {
                 playerPosLeft < treePosRight
             ) {
                 // next();
+
+                player.y = player.y + player.tiltAngleY + 10;
+                player.x = player.x - player.tiltAngleX + 10;
+
                 console.log('Дерево');
                 console.log('Y', player.y);
                 console.log('X', player.x);
-                tree.parentNode.removeChild(tree);
-                // clearInterval(ints.run);
-// -------
-               /* if (ints.run) {
-                    console.log('стоп');
 
-                }*/
-// --------
-               /* clearInterval(ints.run);
-                intervals();*/
+// ----------------------
+                /*function changeDirection(playerY, playerX) {
+                    // let y, x;
+                    if (playerY === player.y + player.tiltAngleY && playerX === player.x - player.tiltAngleX) {
+                        playerY += player.tiltAngleY;
+                        playerX -= player.tiltAngleX;
+                        // console.log('y', y);
+                        // console.log('x', x);
+                    }
+                    return console.log([playerY, playerX]);
+                }
+                changeDirection(player.y, player.x);*/
+// ----------------------
 
-
-                // clearInterval(ints.run.style.left = player.x);
-
-                // player.x = 100;
-                // console.log('X', player.x === player.el.style.left + tree.style.left);
-                // console.log('X', player.x = player.el.style.left - tree.style.left);
-
-                // console.log('Y', player.y = player.el.style.top - tree.style.top);
-                // console.log('Y', player.y === player.el.style.top + tree.style.top);
-                // player.y = 100;
-                // player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25
-                // player.x;
-                // player.y;
-                //alert('Столкновение')
-                /*if (!clearInterval(ints.run)) {
-                    player.x = 100;
-                    player.y = 100;
-                }*/
-
-                // setInterval(ints.run, 5000);
-                // intervals();
-                /*if (!clearInterval(ints.run)) {
-                    // setInterval(ints.run, 5000);
-                    console.log('запустил');
-                    game();
-                }*/
-                /*player.y = player.el.style.top;
-                player.x = player.el.style.left;*/
-                /*player.el.style.top = `${player.y}px`;
-                player.el.style.left = `${player.x}px`;*/
-
-
+                /*console.log('Дерево');
+                console.log('Y', player.y);
+                console.log('X', player.x);*/
+                // clearInterval(ints.run)
 
                /* player.y -= player.tiltAngleY;
                 player.el.style.top = `${player.y}px`;
