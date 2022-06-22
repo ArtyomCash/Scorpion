@@ -164,75 +164,6 @@ function intervals() {
 
         })
     }, fps);
-    ints.scorpionClaw = setInterval(() => {
-        let scorpionClaw = document.querySelectorAll('.scorpion-claw');
-        // bullets.style.left = '500px';
-        scorpionClaw.forEach(claw => {
-            // let direction = bullet.getAttribute('direction');
-
-            // switch (direction) {
-            /*case 'top':
-                if (bullet.getBoundingClientRect().top < 0) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.top = bullet.getBoundingClientRect().top - bulletSpeed + 'px';
-                }
-                break;*/
-            // case 'right':
-            if (claw.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
-                claw.parentNode.removeChild(claw);
-            } else {
-                // claw.style.left = claw.getBoundingClientRect().left + clawSpeed + 'px';
-                // claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
-                // setTimeout(claw.style.left = '400px', 5000);
-                // setTimeout(claw.style.top = '400px', 5000);
-                // setTimeout(console.log('qqqqqq'), 10);
-
-                // claw.parentNode.removeChild(claw);
-                claw.style.left = claw.getBoundingClientRect().left + clawSpeed +'px';
-                claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
-
-                /*let ttt = setTimeout(alert('gjkeerer'), 3000);
-                clearTimeout(ttt);*/
-                // console.log(claw.style.left);
-                // claw.style.top = '400px';
-                // setTimeout(claw.parentNode.removeChild(claw), 5000);
-                // console.log('claw>>>', setTimeout(claw.parentNode.removeChild(claw), 5000));
-                // claw.style.left = setInterval(claw.getBoundingClientRect, 10000) + 'px';
-                // claw.style.top = setInterval(claw.getBoundingClientRect, 10000) + 'px';
-
-            }
-            // break;
-            /*case 'bottom':
-                if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.top = bullet.getBoundingClientRect().top + bulletSpeed + 'px';
-                }
-                break;
-            case 'left':
-                if (bullet.getBoundingClientRect().left < 0) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.left = bullet.getBoundingClientRect().left - bulletSpeed + 'px';
-                }
-                break;*/
-            // }
-
-        })
-
-    }, 200);
-    ints.scorpionClawTrue = setInterval(() => {
-        let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
-        scorpionClawStop.forEach(clawStop => {
-            if (ints.scorpionClaw) {
-                clawStop.parentNode.removeChild(clawStop);
-            }
-        });
-
-    }, 5000);
-
-    // описание появления врагов
     ints.enemy = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach(enemy => {
@@ -336,27 +267,27 @@ function intervals() {
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-               /* case 'left':
-                    if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
-                    }
-                    break;
-                case 'top':
-                    if (enemy.getBoundingClientRect().top <= 0) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.top = enemy.getBoundingClientRect().top - 3 + 'px';
-                    }
-                    break;
-                case 'bottom':
-                    if (enemy.getBoundingClientRect().bottom >= gameZone.getBoundingClientRect().height) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
-                    }
-                    break;*/
+                /* case 'left':
+                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
+                         enemy.parentNode.removeChild(enemy);
+                     } else {
+                         enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
+                     }
+                     break;
+                 case 'top':
+                     if (enemy.getBoundingClientRect().top <= 0) {
+                         enemy.parentNode.removeChild(enemy);
+                     } else {
+                         enemy.style.top = enemy.getBoundingClientRect().top - 3 + 'px';
+                     }
+                     break;
+                 case 'bottom':
+                     if (enemy.getBoundingClientRect().bottom >= gameZone.getBoundingClientRect().height) {
+                         enemy.parentNode.removeChild(enemy);
+                     } else {
+                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
+                     }
+                     break;*/
             }
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
@@ -373,8 +304,8 @@ function intervals() {
 
         switch (direction) {
             /*case 1: //Top
-                gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg); 
-                top: ${gameZone.getBoundingClientRect().height - player.h}px; 
+                gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg);
+                top: ${gameZone.getBoundingClientRect().height - player.h}px;
                 left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
                 break;*/
             case 1: //Left
@@ -398,15 +329,15 @@ function intervals() {
                 left: ${gameZone.getBoundingClientRect().width - player.w - 100}px;" direction="right"></div>`;
                 break;
             /*case 3: //Bottom
-                gameZone.innerHTML += `<div class="enemy" 
-                style="transform: rotate(90deg); 
-                top: 0; 
-                left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px;" 
+                gameZone.innerHTML += `<div class="enemy"
+                style="transform: rotate(90deg);
+                top: 0;
+                left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px;"
                 direction="bottom"></div>`;
                 break;
             case 4: //Right
-                gameZone.innerHTML += `<div class="enemy" 
-                style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px; 
+                gameZone.innerHTML += `<div class="enemy"
+                style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px;
                 left: 0;" direction="left"></div>`;
                 break;*/
         }
@@ -497,6 +428,79 @@ function intervals() {
 
         })
     }, enemyShotsSpeed);
+    ints.scorpionClaw = setInterval(() => {
+        let scorpionClaw = document.querySelectorAll('.scorpion-claw');
+        // bullets.style.left = '500px';
+        scorpionClaw.forEach(claw => {
+            // let direction = bullet.getAttribute('direction');
+
+            // switch (direction) {
+            /*case 'top':
+                if (bullet.getBoundingClientRect().top < 0) {
+                    bullet.parentNode.removeChild(bullet);
+                } else {
+                    bullet.style.top = bullet.getBoundingClientRect().top - bulletSpeed + 'px';
+                }
+                break;*/
+            // case 'right':
+            if (claw.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
+                claw.parentNode.removeChild(claw);
+            } else {
+                // claw.style.left = claw.getBoundingClientRect().left + clawSpeed + 'px';
+                // claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
+                // setTimeout(claw.style.left = '400px', 5000);
+                // setTimeout(claw.style.top = '400px', 5000);
+                // setTimeout(console.log('qqqqqq'), 10);
+
+                // claw.parentNode.removeChild(claw);
+                claw.style.left = claw.getBoundingClientRect().left + clawSpeed +'px';
+                claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
+
+                /*let ttt = setTimeout(alert('gjkeerer'), 3000);
+                clearTimeout(ttt);*/
+                // console.log(claw.style.left);
+                // claw.style.top = '400px';
+                // setTimeout(claw.parentNode.removeChild(claw), 5000);
+                // console.log('claw>>>', setTimeout(claw.parentNode.removeChild(claw), 5000));
+                // claw.style.left = setInterval(claw.getBoundingClientRect, 10000) + 'px';
+                // claw.style.top = setInterval(claw.getBoundingClientRect, 10000) + 'px';
+
+            }
+            // break;
+            /*case 'bottom':
+                if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
+                    bullet.parentNode.removeChild(bullet);
+                } else {
+                    bullet.style.top = bullet.getBoundingClientRect().top + bulletSpeed + 'px';
+                }
+                break;
+            case 'left':
+                if (bullet.getBoundingClientRect().left < 0) {
+                    bullet.parentNode.removeChild(bullet);
+                } else {
+                    bullet.style.left = bullet.getBoundingClientRect().left - bulletSpeed + 'px';
+                }
+                break;*/
+            // }
+
+        })
+
+    }, 200);
+    ints.scorpionClawTrue = setInterval(() => {
+        let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
+        scorpionClawStop.forEach(clawStop => {
+            if (ints.scorpionClaw) {
+                clawStop.parentNode.removeChild(clawStop);
+            }
+        });
+
+    }, 5000);
+
+    // описание появления врагов
+
+
+
+
 
     // деревья -------------------
     ints.treePlanting = setInterval(() => {
@@ -773,6 +777,7 @@ let gameZone = document.querySelector('.game-zone'),
         y: 209,
     },
     bulletSpeed = 10,
+    enemyBulletSpeed = 10,
     clawSpeed = 10,
     enemyGenerateSpeed = 1000,
     enemyShotsSpeed = 1000,
