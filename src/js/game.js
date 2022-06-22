@@ -12,6 +12,45 @@ function randomInteger(min, max) {
 }
 */
 
+/*function next() {
+
+    player.hp -= 1;
+
+    clearInterval(ints.enemy);
+    clearInterval(ints.run);
+    clearInterval(ints.bullet);
+    clearInterval(ints.generateEnemy);
+    clearInterval(ints.enemyBullet);
+    clearInterval(ints.checkEnemyBulletForPlayer);
+    clearInterval(ints.enemyShots);
+
+    let enemies = document.querySelectorAll('.enemy');
+
+    enemies.forEach((enemy) => {
+        enemy.parentNode.removeChild(enemy);
+    });
+
+    let enemyBullets = document.querySelectorAll('.enemy-bullet');
+
+    enemyBullets.forEach((bullet) => {
+        bullet.parentNode.removeChild(bullet);
+    });
+
+    let bullets = document.querySelectorAll('.bullet');
+
+    bullets.forEach((bullet) => {
+        bullet.parentNode.removeChild(bullet);
+    });
+
+    player.el.parentNode.removeChild(player.el);
+
+    if (player.hp === 0) {
+        return gameOver();
+    }
+
+    game();
+}*/
+
 function treeLeftSide(min, max) {
     let randTrees = min * Math.random() + max * Math.random();
     return console.log('Math.round(randTrees)', Math.round(randTrees));
@@ -367,11 +406,11 @@ function intervals() {
                             style="left: ${enemy.getBoundingClientRect().left}px; top: ${enemy.getBoundingClientRect().top}px;"></div>`;
                             player.el = document.querySelector('.player');
                     }
-                    if (enemy.getBoundingClientRect().left <= 0) {
+                   /* if (enemy.getBoundingClientRect().left <= 0) {
                         enemy.parentNode.removeChild(enemy);
                     } else {
                         enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
-                    }
+                    }*/
                     break;
                 /*case 'left':
                     if (
