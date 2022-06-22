@@ -12,7 +12,7 @@ function randomInteger(min, max) {
 }
 */
 
-/*function next() {
+function next() {
 
     player.hp -= 1;
 
@@ -49,7 +49,7 @@ function randomInteger(min, max) {
     }
 
     game();
-}*/
+}
 
 function treeLeftSide(min, max) {
     let randTrees = min * Math.random() + max * Math.random();
@@ -227,7 +227,7 @@ function intervals() {
                 playerPosRight > enemyPosLeft &&
                 playerPosLeft < enemyPosRight
             ) {
-                // next();
+                next();
                 console.log('Столкновение');
                 //alert('Столкновение')
             }
@@ -544,10 +544,6 @@ function intervals() {
 
     // описание появления врагов
 
-
-
-
-
     // деревья -------------------
     ints.treePlanting = setInterval(() => {
         let trees = document.querySelectorAll('.tree');
@@ -652,6 +648,35 @@ function intervals() {
         });
 
     }, fps);
+    ints.checkEnemyBulletForPlayer = setInterval(() => {
+        let bullets = document.querySelectorAll('.enemy-bullet');
+        bullets.forEach((bullet) => {
+
+            let direction = bullet.getAttribute('direction');
+
+            if (['top', 'left', 'right'].includes(direction)) {
+                if (
+                    bullet.getBoundingClientRect().top < player.el.getBoundingClientRect().bottom &&
+                    bullet.getBoundingClientRect().bottom > player.el.getBoundingClientRect().top &&
+                    bullet.getBoundingClientRect().right > player.el.getBoundingClientRect().left &&
+                    bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
+                ) {
+                    next();
+                    bullet.parentNode.removeChild(bullet);
+                }
+            } else {
+                if (
+                    bullet.getBoundingClientRect().bottom > player.el.getBoundingClientRect().top &&
+                    bullet.getBoundingClientRect().right > player.el.getBoundingClientRect().left &&
+                    bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
+                ) {
+                    next();
+                    bullet.parentNode.removeChild(bullet);
+                }
+            }
+
+        });
+    }, fps)
 
         /*let trees = document.querySelectorAll('.tree');
         trees.forEach(tree => {
