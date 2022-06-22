@@ -64,16 +64,27 @@ function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
     // gameZone.innerHTML += `<div class="tree" style="left: ${trees.x}px; top: ${trees.y}px"></div>`;
 
+    gameZone.innerHTML += `<div class="tree" style="left: -96px; top: 396px"></div>`;
     gameZone.innerHTML += `<div class="tree" style="left: -16px; top: 324px"></div>`;
     gameZone.innerHTML += `<div class="tree" style="left: 105px; top: 293px"></div>`;
     gameZone.innerHTML += `<div class="tree" style="left: 231px; top: 264px"></div>`;
     gameZone.innerHTML += `<div class="tree" style="left: 359px; top: 228px"></div>`;
-    gameZone.innerHTML += `<div class="tree" style="left: 500px; top: 200px"></div>`;
+    gameZone.innerHTML += `<div class="tree" style="left: 482px; top: 200px"></div>`;
+    gameZone.innerHTML += `<div class="tree" style="left: 582px; top: 162px"></div>`;
 
+    gameZone.innerHTML += `<div class="tree" style="left: 679px; top: 138px"></div>`;
+    gameZone.innerHTML += `<div class="tree" style="left: 785px; top: 113px"></div>`;
+
+    gameZone.innerHTML += `<div class="tree-right" style="left: 634px; top: 964px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 740px; top: 814px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 864px; top: 667px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 978px; top: 523px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 1087px; top: 398px"></div>`;
+    gameZone.innerHTML += `<div class="tree-right" style="left: 1200px; top: 233px"></div>`;
+    gameZone.innerHTML += `<div class="tree-right" style="left: 1305px; top: 102px"></div>`;
+    gameZone.innerHTML += `<div class="tree-right" style="left: 1404px; top: -35px"></div>`;
+    gameZone.innerHTML += `<div class="tree-right" style="left: 1504px; top: -169px"></div>`;
+    gameZone.innerHTML += `<div class="tree-right" style="left: 1591px; top: -310px"></div>`;
 
     player.el = document.querySelector('.player');
 
@@ -341,16 +352,17 @@ function intervals() {
 
         })
     }, fps);
-    ints.generateEnemy = setInterval(() => {
+    // появление муравьёв
+    /*ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
         switch (direction) {
-            /*case 1: //Top
+            /!*case 1: //Top
                 gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg);
                 top: ${gameZone.getBoundingClientRect().height - player.h}px;
                 left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
-                break;*/
+                break;*!/
             case 1: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
                 top: ${gameZone.getBoundingClientRect().height - player.h - 600}px; 
@@ -371,7 +383,7 @@ function intervals() {
                 top: ${gameZone.getBoundingClientRect().height - player.h - 300}px; 
                 left: ${gameZone.getBoundingClientRect().width - player.w - 100}px;" direction="right"></div>`;
                 break;
-            /*case 3: //Bottom
+            /!*case 3: //Bottom
                 gameZone.innerHTML += `<div class="enemy"
                 style="transform: rotate(90deg);
                 top: 0;
@@ -382,12 +394,12 @@ function intervals() {
                 gameZone.innerHTML += `<div class="enemy"
                 style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px;
                 left: 0;" direction="left"></div>`;
-                break;*/
+                break;*!/
         }
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);
+    }, enemyGenerateSpeed);*/
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
@@ -501,6 +513,9 @@ function intervals() {
                 // claw.parentNode.removeChild(claw);
                 claw.style.left = claw.getBoundingClientRect().left + clawSpeed +'px';
                 claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
+
+
+                // claw.style.animation = claw.getBoundingClientRect().left + 6 + clawSpeed + 'px';
 
                 /*let ttt = setTimeout(alert('gjkeerer'), 3000);
                 clearTimeout(ttt);*/
@@ -737,7 +752,7 @@ function addBullet() {
 function addScorpionClaw() {
     switch (player.side) {
         case 1:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top"></div>`;
             break;
         case 2:
             gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;

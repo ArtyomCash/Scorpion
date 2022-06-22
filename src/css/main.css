@@ -42,6 +42,30 @@
     background-image: url(../sprites/claw.png);
     background-repeat: no-repeat;
     background-size: cover;
+    transform: rotate(0deg);
+    /*animation: bounce  1s infinite ease-in-out;*/
+    animation: claw  2s;
+}
+@keyframes claw {
+    0% {
+        /*transform: translateY(0);*/
+        transform: translateY(0px) translateX(0px);
+    }
+    30% {
+        transform: translateY(-100px) translateX(0px);
+    }
+    50% {
+        transform: translateY(0px) translateX(0px);
+    }
+    60% {
+        transform: translateY(0px) translateX(0px);
+    }
+    80% {
+        transform: translateY(0px) translateX(0px);
+    }
+    100% {
+        transform: translateY(100px) translateX(0px);
+    }
 }
 .enemy {
     position: absolute;
