@@ -75,7 +75,7 @@ function init() {
     gameZone.innerHTML += `<div class="tree" style="left: 679px; top: 138px"></div>`;
     gameZone.innerHTML += `<div class="tree" style="left: 785px; top: 113px"></div>`;
 
-    gameZone.innerHTML += `<div class="tree-right" style="left: 634px; top: 964px"></div>`;
+    // gameZone.innerHTML += `<div class="tree-right" style="left: 634px; top: 964px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 740px; top: 814px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 864px; top: 667px"></div>`;
     gameZone.innerHTML += `<div class="tree-right" style="left: 978px; top: 523px"></div>`;
@@ -752,7 +752,7 @@ function addBullet() {
 function addScorpionClaw() {
     switch (player.side) {
         case 1:
-            gameZone.innerHTML += `<div class="scorpion-claw" direction="top"></div>`;
+            gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;
             break;
         case 2:
             gameZone.innerHTML += `<div class="scorpion-claw" direction="top" style="left: ${player.x + player.w - 2}px; top: ${player.y -7}px;"></div>`;

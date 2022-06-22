@@ -4,7 +4,7 @@
     padding: 0;
     margin: 0;
     /*background-image: url(../sprites/back.png);*/
-    background-image: url(../sprites/roads.jpg);
+    background-image: url(../sprites/road_2.png);
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -44,7 +44,7 @@
     background-size: cover;
     transform: rotate(0deg);
     /*animation: bounce  1s infinite ease-in-out;*/
-    animation: claw  2s;
+    animation: claw  5s;
 }
 @keyframes claw {
     0% {
@@ -52,7 +52,7 @@
         transform: translateY(0px) translateX(0px);
     }
     30% {
-        transform: translateY(-100px) translateX(0px);
+        transform: translateY(-20px) translateX(0px);
     }
     50% {
         transform: translateY(0px) translateX(0px);
@@ -64,7 +64,7 @@
         transform: translateY(0px) translateX(0px);
     }
     100% {
-        transform: translateY(100px) translateX(0px);
+        transform: translateY(200px) translateX(0px);
     }
 }
 .enemy {
