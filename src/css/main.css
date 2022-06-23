@@ -36,6 +36,7 @@
     background-image: url(../sprites/binoculars.png);
     background-repeat: no-repeat;
     background-size: cover;
+    /*animation: claw  1s infinite ease-in-out;*/
 }
 .scorpion-claw {
     position: absolute;
@@ -54,19 +55,19 @@
         transform: translateY(0px) translateX(0px);
     }
     30% {
-        transform: translateY(-20px) translateX(0px);
+        transform: translateY(-20px) translateX(0px) rotateZ(180deg);
     }
     50% {
-        transform: translateY(0px) translateX(0px);
+        transform: translateY(0px) translateX(0px) rotateZ(180deg);
     }
     60% {
-        transform: translateY(0px) translateX(0px);
+        transform: translateY(0px) translateX(0px) rotateZ(180deg);
     }
     80% {
-        transform: translateY(0px) translateX(0px);
+        transform: translateY(0px) translateX(0px) rotateZ(180deg);
     }
     100% {
-        transform: translateY(200px) translateX(0px);
+        transform: translateY(200px) translateX(0px) rotateZ(180deg);
     }
 }
 .enemy {
