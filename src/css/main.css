@@ -4,7 +4,7 @@
     padding: 0;
     margin: 0;
     /*background-image: url(../sprites/back.png);*/
-    background-image: url(../sprites/road_2.png);
+    background-image: url(../sprites/road_3_1980.png);
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -30,10 +30,12 @@
 }
 .enemy-bullet {
     position: absolute;
-    width: 16px;
-    height: 16px;
-    background-image: url(../sprites/bullet.png);
+    width: 40px;
+    height: 32px;
+    /*background-image: url(../sprites/bullet.png);*/
+    background-image: url(../sprites/binoculars.png);
     background-repeat: no-repeat;
+    background-size: cover;
 }
 .scorpion-claw {
     position: absolute;
@@ -42,9 +44,9 @@
     background-image: url(../sprites/claw.png);
     background-repeat: no-repeat;
     background-size: cover;
-    transform: rotate(0deg);
+    /*transform: rotate(45deg);*/
     /*animation: bounce  1s infinite ease-in-out;*/
-    animation: claw  5s;
+    /*animation: claw  5s;*/
 }
 @keyframes claw {
     0% {
