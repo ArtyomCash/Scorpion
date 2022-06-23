@@ -330,53 +330,31 @@ function intervals() {
         })
     }, fps);
     // появление муравьёв
-    /*ints.generateEnemy = setInterval(() => {
+    ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
         switch (direction) {
-            /!*case 1: //Top
-                gameZone.innerHTML += `<div class="enemy" style="transform: rotate(-90deg);
-                top: ${gameZone.getBoundingClientRect().height - player.h}px;
-                left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px" direction="top"></div>`;
-                break;*!/
             case 1: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 600}px; 
+                top: ${gameZone.getBoundingClientRect().height - player.h - 750}px;
                 left: ${gameZone.getBoundingClientRect().width - player.w - 600}px;" direction="right"></div>`;
                 break;
             case 2: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 500}px; 
-                left: ${gameZone.getBoundingClientRect().width - player.w - 450}px;" direction="right"></div>`;
+                top: ${gameZone.getBoundingClientRect().height - player.h - 680}px;
+                left: ${gameZone.getBoundingClientRect().width - player.w - 400}px;" direction="right"></div>`;
                 break;
             case 3: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 400}px; 
+                top: ${gameZone.getBoundingClientRect().height - player.h - 588}px;
                 left: ${gameZone.getBoundingClientRect().width - player.w - 250}px;" direction="right"></div>`;
                 break;
-            case 4: //Left
-                gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 300}px; 
-                left: ${gameZone.getBoundingClientRect().width - player.w - 100}px;" direction="right"></div>`;
-                break;
-            /!*case 3: //Bottom
-                gameZone.innerHTML += `<div class="enemy"
-                style="transform: rotate(90deg);
-                top: 0;
-                left: ${randomInteger(0, gameZone.getBoundingClientRect().width - player.w)}px;"
-                direction="bottom"></div>`;
-                break;
-            case 4: //Right
-                gameZone.innerHTML += `<div class="enemy"
-                style="top: ${randomInteger(0, gameZone.getBoundingClientRect().height - player.h)}px;
-                left: 0;" direction="left"></div>`;
-                break;*!/
         }
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);*/
+    }, enemyGenerateSpeed);
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
