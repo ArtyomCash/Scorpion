@@ -231,8 +231,8 @@ function intervals() {
                     ) {
                         enemy.parentNode.removeChild(enemy);
                         bullet.parentNode.removeChild(bullet);
-                        // points += 1;
-                        document.querySelector('.inner-points').innerText = points;
+                        points += 1;
+                        document.querySelector('.points').innerText = points;
                     }
                 } /*else {
                           enemy.parentNode.removeChild(enemy);
@@ -267,7 +267,7 @@ function intervals() {
                         enemy.parentNode.removeChild(enemy);
                         claw.parentNode.removeChild(claw);
                         points += 1;
-                        document.querySelector('.inner-points').innerText = points;
+                        document.querySelector('.points').innerText = points;
                     }
                 } /*else {
                           enemy.parentNode.removeChild(enemy);
@@ -330,7 +330,7 @@ function intervals() {
         })
     }, fps);
     // появление муравьёв
-    /*ints.generateEnemy = setInterval(() => {
+    ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
@@ -354,7 +354,7 @@ function intervals() {
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);*/
+    }, enemyGenerateSpeed);
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
@@ -819,6 +819,7 @@ function game() {
 
 let gameZone = document.querySelector('.game-zone'),
     fps = 1000 / 60,
+    points = 0;
     player = {
         sprites: {
             // top: 'src/sprites/player-top.png',
