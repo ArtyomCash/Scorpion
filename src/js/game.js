@@ -774,6 +774,7 @@ let gameZone = document.querySelector('.game-zone'),
         tiltAngleY: 12 * 0.1,
         tiltAngleX: 12 * 0.3,
         life: 3,
+        lifeVolume: 30,
     },
     trees = {
         x: 468,
