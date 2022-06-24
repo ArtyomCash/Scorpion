@@ -8,10 +8,26 @@ function randomInteger(min, max) {
 /*
 
 */
+function gameOver() {
+    points = 0;
+    document.querySelector('.points').innerText = points;
+    attacks = 0;
+
+    document.querySelector('.attack').innerText = attacks;
+
+    player.life = 3;
+    let liveLevel = document.querySelector('.level-life');
+    liveLevel.style.width = '90px';
+}
 
 function next() {
 
-    player.hp -= 1;
+    player.life -= 1;
+    console.log('player.life', player.life);
+/*
+    if (player.life === 0) {
+        gameOver();
+    }*/
 
     clearInterval(ints.enemy);
     clearInterval(ints.run);
@@ -51,10 +67,30 @@ function next() {
     game();
 }
 
+
+
 function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
     // gameZone.innerHTML += `<div class="tree" style="left: ${trees.x}px; top: ${trees.y}px"></div>`;
     player.el = document.querySelector('.player');
+
+    let liveLevel = document.querySelector('.level-life');
+    switch (player.life) {
+        case 3:
+            liveLevel.style.width = '90px';
+            break;
+        case 2:
+            // document.querySelector('.level-life').innerHTML = `<img src="src/sprites/heart-1.png" class="life__image">`;
+            liveLevel.style.width = '60px';
+            break;
+        case 1:
+            liveLevel.style.width = '30px';
+            break;
+        case 0:
+            liveLevel.style.width = '0px';
+            gameOver();
+            break;
+    }
 
 }
 
@@ -737,6 +773,7 @@ let gameZone = document.querySelector('.game-zone'),
         h: 77,
         tiltAngleY: 12 * 0.1,
         tiltAngleX: 12 * 0.3,
+        life: 3,
     },
     trees = {
         x: 468,

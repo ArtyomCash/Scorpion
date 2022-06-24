@@ -10,6 +10,17 @@
     background-size: cover;
     overflow: hidden;
 }
+.player-name {
+    position: absolute;
+}
+.level-life {
+    position: absolute;
+    top: 25px;
+    left: 115px;
+    width: 90px;
+    height: 20px;
+    background-color: green;
+}
 .info {
     position: absolute;
     top: 0;
