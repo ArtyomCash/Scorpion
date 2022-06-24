@@ -18,7 +18,62 @@ function gameOver() {
     player.life = 3;
     let liveLevel = document.querySelector('.level-life');
     liveLevel.style.width = '90px';
+
+    clearInterval(ints.enemy);
+    clearInterval(ints.run);
+    clearInterval(ints.bullet);
+    clearInterval(ints.generateEnemy);
+    clearInterval(ints.enemyBullet);
+    clearInterval(ints.checkEnemyBulletForPlayer);
+    clearInterval(ints.enemyShots);
+    clearInterval(ints.scorpionClaw);
+
+    let scorpionClaw = document.querySelectorAll('.scorpion-claw');
+
+    scorpionClaw.forEach((scorpionClaws) => {
+        scorpionClaws.parentNode.removeChild(scorpionClaws);
+    });
+
+    let enemies = document.querySelectorAll('.enemy');
+
+    enemies.forEach((enemy) => {
+        enemy.parentNode.removeChild(enemy);
+    });
+
+    let enemyBullets = document.querySelectorAll('.enemy-bullet');
+
+    enemyBullets.forEach((bullet) => {
+        bullet.parentNode.removeChild(bullet);
+    });
+
+    let bullets = document.querySelectorAll('.bullet');
+
+    bullets.forEach((bullet) => {
+        bullet.parentNode.removeChild(bullet);
+    });
+
+    player.el.parentNode.removeChild(player.el);
 }
+// document.addEventListener('click');
+
+
+/*let knopka = document.getElementById ('push');
+knopka.addEventListener('click', func1);
+
+function func1() {
+    let shadow = document.getElementById ('ts1');
+    if (shadow.style.display !== 'none'){
+        shadow.style.display="none";
+    }else{
+        shadow.style.display="block";
+    }
+
+}*/
+function startGame() {
+    let start = document.getElementById ('game');
+    start.style.display = 'none';
+}
+
 
 function next() {
 
@@ -340,7 +395,7 @@ function intervals() {
         })
     }, fps);
     // появление муравьёв
-    ints.generateEnemy = setInterval(() => {
+    /*ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
@@ -364,7 +419,7 @@ function intervals() {
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);
+    }, enemyGenerateSpeed);*/
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {

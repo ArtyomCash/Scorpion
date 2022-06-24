@@ -10,6 +10,28 @@
     background-size: cover;
     overflow: hidden;
 }
+.game-over {
+    position: absolute;
+    z-index: 2;
+    top: 41%;
+    left: 37%;
+    width: 280px;
+    height: 135px;
+    background-color: green;
+    border-radius: 16px;
+    box-shadow: 10px 5px 5px #a3ff3d;
+}
+.game-over {
+    display: block;
+}
+.game-title {
+    text-align: center;
+}
+.game-start-btn {
+    display: flex;
+    margin: 0 auto;
+    cursor: pointer;
+}
 .player-name {
     position: absolute;
 }
