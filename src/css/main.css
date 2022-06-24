@@ -10,7 +10,11 @@
     background-size: cover;
     overflow: hidden;
 }
-
+.info {
+    position: absolute;
+    top: 0;
+    left: 50px;
+}
 .player {
     position: absolute;
     width: 97px;

@@ -330,7 +330,7 @@ function intervals() {
         })
     }, fps);
     // появление муравьёв
-    ints.generateEnemy = setInterval(() => {
+    /*ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
@@ -354,7 +354,7 @@ function intervals() {
 
 
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);
+    }, enemyGenerateSpeed);*/
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
