@@ -19,7 +19,9 @@ function gameOver() {
     let liveLevel = document.querySelector('.level-life');
     liveLevel.style.width = '90px';
 
-    clearInterval(ints.enemy);
+    let start = document.getElementById ('game');
+    start.style.display = 'block';
+
     clearInterval(ints.run);
     clearInterval(ints.bullet);
     clearInterval(ints.generateEnemy);
@@ -27,6 +29,7 @@ function gameOver() {
     clearInterval(ints.checkEnemyBulletForPlayer);
     clearInterval(ints.enemyShots);
     clearInterval(ints.scorpionClaw);
+    clearInterval(ints.enemy);
 
     let scorpionClaw = document.querySelectorAll('.scorpion-claw');
 
@@ -53,25 +56,13 @@ function gameOver() {
     });
 
     player.el.parentNode.removeChild(player.el);
+    // game();
 }
-// document.addEventListener('click');
 
-
-/*let knopka = document.getElementById ('push');
-knopka.addEventListener('click', func1);
-
-function func1() {
-    let shadow = document.getElementById ('ts1');
-    if (shadow.style.display !== 'none'){
-        shadow.style.display="none";
-    }else{
-        shadow.style.display="block";
-    }
-
-}*/
 function startGame() {
     let start = document.getElementById ('game');
     start.style.display = 'none';
+    game();
 }
 
 
@@ -395,7 +386,7 @@ function intervals() {
         })
     }, fps);
     // появление муравьёв
-    /*ints.generateEnemy = setInterval(() => {
+    ints.generateEnemy = setInterval(() => {
 
         let direction = randomInteger(1, 4);
 
@@ -417,9 +408,8 @@ function intervals() {
                 break;
         }
 
-
         player.el = document.querySelector('.player');
-    }, enemyGenerateSpeed);*/
+    }, enemyGenerateSpeed);
     ints.enemyShots = setInterval(() => {
         let enemies = document.querySelectorAll('.enemy');
         enemies.forEach((enemy) => {
