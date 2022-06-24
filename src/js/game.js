@@ -6,10 +6,7 @@ function randomInteger(min, max) {
     return Math.round(rand);
 }
 /*
-function randomInteger(min, max) {
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-}
+
 */
 
 function next() {
@@ -50,10 +47,6 @@ function next() {
     });
 
     player.el.parentNode.removeChild(player.el);
-
-   /* if (player.hp === 0) {
-        return gameOver();
-    }*/
 
     game();
 }
@@ -155,40 +148,35 @@ function intervals() {
             let direction = bullet.getAttribute('direction');
 
             switch (direction) {
-               /* case 'top':
-                    if (bullet.getBoundingClientRect().top < 0) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.top = bullet.getBoundingClientRect().top - enemyBulletSpeed + 'px';
-                    }
-                    break;*/
-                /*case 'right':
-                    if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.left = bullet.getBoundingClientRect().left + enemyBulletSpeed + 'px';
-                    }
-                    break;
-                case 'bottom':
-                    if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.top = bullet.getBoundingClientRect().top + enemyBulletSpeed + 'px';
-                    }
-                    break;*/
                 case 'left':
                     if (bullet.getBoundingClientRect().left < 0) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left - 3 + 'px';
                         bullet.style.top = bullet.getBoundingClientRect().top +1 + 'px';
-
-                        // enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
-                        // enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
             }
 
+            let scorpionClaw = document.querySelectorAll('.scorpion-claw');
+            scorpionClaw.forEach((claw) => {
+
+                let direction = claw.getAttribute('direction');
+
+                if (['top', 'left', 'right'].includes(direction)) {
+                    if (
+                        claw.getBoundingClientRect().top < bullet.getBoundingClientRect().bottom &&
+                        claw.getBoundingClientRect().bottom > bullet.getBoundingClientRect().top &&
+                        claw.getBoundingClientRect().right > bullet.getBoundingClientRect().left &&
+                        claw.getBoundingClientRect().left < bullet.getBoundingClientRect().right
+                    ) {
+                        bullet.parentNode.removeChild(bullet);
+                        claw.parentNode.removeChild(claw);
+                        attacks += 1;
+                        document.querySelector('.attack').innerText = attacks;
+                    }
+                }
+            });
         })
     }, 10);
     ints.enemy = setInterval(() => {
@@ -234,26 +222,12 @@ function intervals() {
                         points += 1;
                         document.querySelector('.points').innerText = points;
                     }
-                } /*else {
-                          enemy.parentNode.removeChild(enemy);
-                          bullet.parentNode.removeChild(bullet);
-                          console.log('непонятно 1');
-                    if (
-                        bullet.getBoundingClientRect().bottom > enemy.getBoundingClientRect().top &&
-                        bullet.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
-                        bullet.getBoundingClientRect().left < enemy.getBoundingClientRect().right
-                    ) {
-                        enemy.parentNode.removeChild(enemy);
-                        bullet.parentNode.removeChild(bullet);
-                        // points += 1;
-                        document.querySelector('.inner-points').innerText = points;
-                    }
-                }*/
+                }
             });
 
-            let scorpionClaw = document.querySelectorAll('.scorpion-claw');
-
-            scorpionClaw.forEach((claw) => {
+            // попадание клешни в монстра
+            // let scorpionClaw = document.querySelectorAll('.scorpion-claw');
+            /*scorpionClaw.forEach((claw) => {
 
                 let direction = claw.getAttribute('direction');
 
@@ -269,7 +243,7 @@ function intervals() {
                         points += 1;
                         document.querySelector('.points').innerText = points;
                     }
-                } /*else {
+                } /!*else {
                           enemy.parentNode.removeChild(enemy);
                           claw.parentNode.removeChild(claw);
                              console.log('непонятно 2');
@@ -283,9 +257,9 @@ function intervals() {
                         points += 1;
                         document.querySelector('.inner-points').innerText = points;
                     }
-                }*/
+                }*!/
 
-            });
+            });*/
 
             let direction = enemy.getAttribute('direction');
 
@@ -443,62 +417,14 @@ function intervals() {
     }, enemyShotsSpeed);
     ints.scorpionClaw = setInterval(() => {
         let scorpionClaw = document.querySelectorAll('.scorpion-claw');
-        // bullets.style.left = '500px';
         scorpionClaw.forEach(claw => {
-            // let direction = bullet.getAttribute('direction');
 
-            // switch (direction) {
-            /*case 'top':
-                if (bullet.getBoundingClientRect().top < 0) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.top = bullet.getBoundingClientRect().top - bulletSpeed + 'px';
-                }
-                break;*/
-            // case 'right':
             if (claw.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
                 claw.parentNode.removeChild(claw);
             } else {
-                // claw.style.left = claw.getBoundingClientRect().left + clawSpeed + 'px';
-                // claw.style.top = claw.getBoundingClientRect().top + 6 - clawSpeed + 'px';
-                // setTimeout(claw.style.left = '400px', 5000);
-                // setTimeout(claw.style.top = '400px', 5000);
-                // setTimeout(console.log('qqqqqq'), 10);
-
-                // claw.parentNode.removeChild(claw);
                 claw.style.left = claw.getBoundingClientRect().left +'px';
                 claw.style.top = claw.getBoundingClientRect().top + 'px';
-
-
-                // claw.style.animation = claw.getBoundingClientRect().left + 6 + clawSpeed + 'px';
-
-                /*let ttt = setTimeout(alert('gjkeerer'), 3000);
-                clearTimeout(ttt);*/
-                // console.log(claw.style.left);
-                // claw.style.top = '400px';
-                // setTimeout(claw.parentNode.removeChild(claw), 5000);
-                // console.log('claw>>>', setTimeout(claw.parentNode.removeChild(claw), 5000));
-                // claw.style.left = setInterval(claw.getBoundingClientRect, 10000) + 'px';
-                // claw.style.top = setInterval(claw.getBoundingClientRect, 10000) + 'px';
-
             }
-            // break;
-            /*case 'bottom':
-                if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.top = bullet.getBoundingClientRect().top + bulletSpeed + 'px';
-                }
-                break;
-            case 'left':
-                if (bullet.getBoundingClientRect().left < 0) {
-                    bullet.parentNode.removeChild(bullet);
-                } else {
-                    bullet.style.left = bullet.getBoundingClientRect().left - bulletSpeed + 'px';
-                }
-                break;*/
-            // }
-
         })
 
     }, 200);
@@ -510,14 +436,16 @@ function intervals() {
             ints.scorpionClaw = true;
         }, 5000)
     }*/
-    ints.scorpionClawTrue = setInterval(() => {
+
+    // время которое клешня находиться на поле
+    /*ints.scorpionClawTrue = setInterval(() => {
         let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
         scorpionClawStop.forEach(clawStop => {
             if (ints.scorpionClaw) {
                 clawStop.parentNode.removeChild(clawStop);
             }
         });
-    }, 5000);
+    }, 5000);*/
 
     /*ints.scorpionClawTrue = setInterval(() => {
         let scorpionClawStop = document.querySelectorAll('.scorpion-claw');
@@ -537,8 +465,6 @@ function intervals() {
         });
 
     }, 5000);*/
-
-    // описание появления врагов
 
     // деревья -------------------
     ints.treePlanting = setInterval(() => {
@@ -664,41 +590,10 @@ function intervals() {
             }
 
         });
-    }, fps)
+    }, fps);
 
-        /*let trees = document.querySelectorAll('.tree');
-        trees.forEach(tree => {
-            // top: ${gameZone.getBoundingClientRect().height - player.h}px;
-            tree.style.left = tree.getBoundingClientRect().left + 200 + 'px';
-            tree.style.top = tree.getBoundingClientRect().top + + 100 + 'px';
-
-        });*/
-
-/*    ints.treePlanting = setInterval(()=> {
-        // let trees = document.querySelectorAll('.tree');
-
-        /!*trees.forEach(tree => {
-            tree.style.left = tree.getBoundingClientRect().left + 'px';
-            tree.style.top = tree.getBoundingClientRect().top + 'px';
-
-        });
-*!/
-        gameZone.innerHTML += `<div class="tree" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h}px; 
-                left: ${gameZone.getBoundingClientRect().width - player.w}px;"></div>`;
-    }, 5000)*/
+    // столкновение клешни и бинокля
 }
-/*function clickClawFiveSecond() {
-    if (ints.scorpionClaw) {
-        console.log('поставили мину');
-        ints.scorpionClaw = false;
-        setTimeout(function() {
-            ints.scorpionClaw = true;
-        }, 5000)
-    }
-}
-clickClawFiveSecond();*/
-
 
 /*
     Controllers
@@ -820,6 +715,7 @@ function game() {
 let gameZone = document.querySelector('.game-zone'),
     fps = 1000 / 60,
     points = 0;
+    attacks = 0;
     player = {
         sprites: {
             // top: 'src/sprites/player-top.png',
@@ -858,6 +754,8 @@ let gameZone = document.querySelector('.game-zone'),
         scorpionClawTrue: true,
         treePlanting: true,
         treeGeneration: false,
+        checkEnemyBulletForPlayer: false,
+        checkedEnemyBulletForClaw: false,
     };
 
 game();
