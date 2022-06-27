@@ -65,7 +65,6 @@ function startGame() {
     game();
 }
 
-
 function next() {
 
     player.life -= 1;
@@ -110,14 +109,13 @@ function next() {
 
         game();
     }
-
 }
 
 function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
-    // gameZone.innerHTML += `<div class="tree" style="left: ${trees.x}px; top: ${trees.y}px"></div>`;
     player.el = document.querySelector('.player');
 
+    // уровень жизни персонажа
     let liveLevel = document.querySelector('.level-life');
     switch (player.life) {
         case 3:
@@ -145,7 +143,6 @@ function intervals() {
     ints.run = setInterval(() => {
         if (player.run) {
             switch (player.side) {
-                // в верху и влева не работает
                 case 1: // Top - работает
                     if (player.y > + 10 && player.x < gameZone.getBoundingClientRect().right - player.w - 25) {
                         player.y -= player.tiltAngleY;
@@ -186,12 +183,12 @@ function intervals() {
         // bullets.style.left = '500px';
         bullets.forEach((bullet) => {
 
-                    if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
-                        bullet.style.top = bullet.getBoundingClientRect().top + 6 - bulletSpeed + 'px';
-                    }
+            if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
+                bullet.parentNode.removeChild(bullet);
+            } else {
+                bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
+                bullet.style.top = bullet.getBoundingClientRect().top + 6 - bulletSpeed + 'px';
+            }
 
         })
     }, fps);
@@ -249,32 +246,27 @@ function intervals() {
                 playerPosLeft < enemyPosRight
             ) {
                 next();
-                //alert('Столкновение')
             }
             // попадание в противника (муравьёв)
             let bullets = document.querySelectorAll('.bullet');
 
             bullets.forEach(bullet => {
 
-                // let direction = bullet.getAttribute('direction');
+                if (
+                    bullet.getBoundingClientRect().top < enemy.getBoundingClientRect().bottom &&
+                    bullet.getBoundingClientRect().bottom > enemy.getBoundingClientRect().top &&
+                    bullet.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
+                    bullet.getBoundingClientRect().left < enemy.getBoundingClientRect().right
+                ) {
+                      enemy.parentNode.removeChild(enemy);
 
-                // if (['top', 'left', 'right'].includes(direction)) {
-                    if (
-                        bullet.getBoundingClientRect().top < enemy.getBoundingClientRect().bottom &&
-                        bullet.getBoundingClientRect().bottom > enemy.getBoundingClientRect().top &&
-                        bullet.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
-                        bullet.getBoundingClientRect().left < enemy.getBoundingClientRect().right
-                    ) {
-                          enemy.parentNode.removeChild(enemy);
-
-                          bullet.parentNode.removeChild(bullet);
-                          points += 1;
-                          document.querySelector('.points').innerText = points;
-                    }
-                // }
+                      bullet.parentNode.removeChild(bullet);
+                      points += 1;
+                      document.querySelector('.points').innerText = points;
+                }
             });
 
-            // попадание клешни в монстра
+            // попадание клешни в монстра (муровья)
             // let scorpionClaw = document.querySelectorAll('.scorpion-claw');
             /*scorpionClaw.forEach((claw) => {
 
@@ -314,45 +306,14 @@ function intervals() {
             let direction = enemy.getAttribute('direction');
             switch (direction) {
                 case 'right':
-                    // if (enemy.getBoundingClientRect().left <= 0) {  // пофиксил ошибку в консоле => муровьи дважды удалялись
                     if (enemy.getBoundingClientRect().left > gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
-                        // console.log('за пределами поля', enemy.parentNode.removeChild(enemy));
                     } else {
                         enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
                     }
                     break;
-                /* case 'left':
-                     if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
-                         enemy.parentNode.removeChild(enemy);
-                     } else {
-                         enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
-                     }
-                     break;
-                 case 'top':
-                     if (enemy.getBoundingClientRect().top <= 0) {
-                         enemy.parentNode.removeChild(enemy);
-                     } else {
-                         enemy.style.top = enemy.getBoundingClientRect().top - 3 + 'px';
-                     }
-                     break;
-                 case 'bottom':
-                     if (enemy.getBoundingClientRect().bottom >= gameZone.getBoundingClientRect().height) {
-                         enemy.parentNode.removeChild(enemy);
-                     } else {
-                         enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
-                     }
-                     break;*/
             }
-    // направление движения монстра --------------
-
-            // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
-            //     enemy.parentNode.removeChild(enemy);
-            // } else {
-            //     enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
-            // }
-
         })
     }, fps);
     // появление муравьёв
@@ -398,72 +359,8 @@ function intervals() {
                             style="left: ${enemy.getBoundingClientRect().left}px; top: ${enemy.getBoundingClientRect().top}px;"></div>`;
                             player.el = document.querySelector('.player');
                     }
-                   /* if (enemy.getBoundingClientRect().left <= 0) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
-                    }*/
                     break;
-                /*case 'left':
-                    if (
-                        player.el.getBoundingClientRect().top > enemy.getBoundingClientRect().top &&
-                        player.el.getBoundingClientRect().top < enemy.getBoundingClientRect().bottom &&
-                        player.el.getBoundingClientRect().left > enemy.getBoundingClientRect().right
-                    ) {
-                        gameZone.innerHTML += `<div class="enemy-bullet" direction="right" 
-                            style="left: ${enemy.getBoundingClientRect().right}px; top: ${enemy.getBoundingClientRect().top + 
-                                enemy.getBoundingClientRect().height / 2 - 10}px;"></div>`;
-                                player.el = document.querySelector('.player');
-                    }
-
-                    if (enemy.getBoundingClientRect().left >= gameZone.getBoundingClientRect().width) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
-                    }
-                    break;
-                case 'top':
-
-                    if (
-                        player.el.getBoundingClientRect().bottom < enemy.getBoundingClientRect().top &&
-                        player.el.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
-                        player.el.getBoundingClientRect().right < enemy.getBoundingClientRect().right
-                    ) {
-                        gameZone.innerHTML += `<div class="enemy-bullet" direction="top" style="left: ${enemy.getBoundingClientRect().left + enemy.getBoundingClientRect().width / 2 - 10}px; top: ${enemy.getBoundingClientRect().top}px;"></div>`;
-                        player.el = document.querySelector('.player');
-                    }
-
-                    if (enemy.getBoundingClientRect().top <= 0) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.top = enemy.getBoundingClientRect().top - 3 + 'px';
-                    }
-                    break;
-                case 'bottom':
-
-                    if (
-                        player.el.getBoundingClientRect().top > enemy.getBoundingClientRect().bottom &&
-                        player.el.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
-                        player.el.getBoundingClientRect().right < enemy.getBoundingClientRect().right
-                    ) {
-                        gameZone.innerHTML += `<div class="enemy-bullet" direction="bottom" style="left: ${enemy.getBoundingClientRect().left + enemy.getBoundingClientRect().width / 2 - 10}px; top: ${enemy.getBoundingClientRect().bottom}px;"></div>`;
-                        player.el = document.querySelector('.player');
-                    }
-
-                    if (enemy.getBoundingClientRect().bottom >= gameZone.getBoundingClientRect().height) {
-                        enemy.parentNode.removeChild(enemy);
-                    } else {
-                        enemy.style.top = enemy.getBoundingClientRect().top + 3 + 'px';
-                    }
-                    break;*/
             }
-
-            // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
-            //     enemy.parentNode.removeChild(enemy);
-            // } else {
-            //     enemy.style.left = enemy.getBoundingClientRect().left + 3 + 'px';
-            // }
-
         })
     }, enemyShotsSpeed);
     ints.scorpionClaw = setInterval(() => {
@@ -522,7 +419,7 @@ function intervals() {
         let trees = document.querySelectorAll('.tree');
 
         trees.forEach(tree => {
-            const playerPosTop = player.el.getBoundingClientRect().top,
+            const playerPosTop = player.el.getBoundingClientRect().top, // ошибка в этой строке после 3й игры
                 playerPosRight = player.el.getBoundingClientRect().right,
                 playerPosBottom = player.el.getBoundingClientRect().bottom,
                 playerPosLeft = player.el.getBoundingClientRect().left,
@@ -579,8 +476,6 @@ function intervals() {
                     bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
                 ) {
                     next();
-                    // next();
-                    // bullet.parentNode.removeChild(bullet);
                 }
             } else {
                 if (
@@ -589,15 +484,11 @@ function intervals() {
                     bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
                 ) {
                     next();
-                    // next();
-                    // bullet.parentNode.removeChild(bullet);
                 }
             }
 
         });
     }, fps);
-
-    // столкновение клешни и бинокля
 }
 
 /*
