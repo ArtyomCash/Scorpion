@@ -9,11 +9,6 @@ function randomInteger(min, max) {
 
 */
 function gameOver() {
-    points = 0;
-    document.querySelector('.points').innerText = points;
-    attacks = 0;
-
-    document.querySelector('.attack').innerText = attacks;
 
     player.life = 3;
     let liveLevel = document.querySelector('.level-life');
@@ -64,6 +59,13 @@ function gameOver() {
 function startGame() {
     let start = document.getElementById ('game');
     start.style.display = 'none';
+
+    points = 0;
+    document.querySelector('.points').innerText = points;
+    attacks = 0;
+
+    document.querySelector('.attack').innerText = attacks;
+
     game();
 }
 
@@ -130,15 +132,12 @@ function init() {
             break;
         case 2:
             document.getElementById("threeLive").remove();
-            console.log('2 жизни');
             break;
         case 1:
             document.getElementById("twoLive").remove();
-            console.log('1 жизнь');
             break;
         case 0:
             // document.getElementById("oneLive").remove();
-            console.log('0 жизни');
             next();
             break;
     }
@@ -575,27 +574,10 @@ function controllers() {
             case 67: // кидает клешню
                 addScorpionClaw();
                 break;
+            case 13: // кидает клешню
+                startGame();
+                break;
                 // -------------------------------
-           /* case 87: // Top
-                player.el.style.backgroundImage = `url(${player.sprites.top})`;
-                player.run = true;
-                player.side = 1;
-                break;
-            case 83: // Bottom
-                player.el.style.backgroundImage = `url(${player.sprites.bottom})`;
-                player.run = true;
-                player.side = 3;
-                break;
-            case 68: // Right
-                player.el.style.backgroundImage = `url(${player.sprites.right})`;
-                player.run = true;
-                player.side = 2;
-                break;
-            case 65: //Left
-                player.el.style.backgroundImage = `url(${player.sprites.left})`;
-                player.run = true;
-                player.side = 4;
-                break;*/
         }
     });
 
