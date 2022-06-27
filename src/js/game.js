@@ -69,11 +69,10 @@ function startGame() {
 function next() {
 
     player.life -= 1;
-    console.log('player.life', player.life);
-/*
+
     if (player.life === 0) {
         gameOver();
-    }*/
+    }
 
     clearInterval(ints.enemy);
     clearInterval(ints.run);
@@ -113,8 +112,6 @@ function next() {
     game();
 }
 
-
-
 function init() {
     gameZone.innerHTML += `<div class="player" style="left: ${player.x}px; top: ${player.y}px;"></div>`;
     // gameZone.innerHTML += `<div class="tree" style="left: ${trees.x}px; top: ${trees.y}px"></div>`;
@@ -134,10 +131,9 @@ function init() {
             break;
         case 0:
             liveLevel.style.width = '0px';
-            gameOver();
+            next();
             break;
     }
-
 }
 
 /*
@@ -221,7 +217,6 @@ function intervals() {
                     }
                     break;*/
             // }
-
         })
     }, fps);
     ints.enemyBullet = setInterval(() => {
@@ -266,15 +261,13 @@ function intervals() {
         enemies.forEach(enemy => {
 
             const playerPosTop = player.el.getBoundingClientRect().top,
-                playerPosRight = player.el.getBoundingClientRect().right,
-                playerPosBottom = player.el.getBoundingClientRect().bottom,
-                playerPosLeft = player.el.getBoundingClientRect().left,
-                enemyPosTop = enemy.getBoundingClientRect().top,
-                enemyPosRight = enemy.getBoundingClientRect().right,
-                enemyPosBottom = enemy.getBoundingClientRect().bottom,
-                enemyPosLeft = enemy.getBoundingClientRect().left;
-
-
+                  playerPosRight = player.el.getBoundingClientRect().right,
+                  playerPosBottom = player.el.getBoundingClientRect().bottom,
+                  playerPosLeft = player.el.getBoundingClientRect().left,
+                  enemyPosTop = enemy.getBoundingClientRect().top,
+                  enemyPosRight = enemy.getBoundingClientRect().right,
+                  enemyPosBottom = enemy.getBoundingClientRect().bottom,
+                  enemyPosLeft = enemy.getBoundingClientRect().left;
             if (
                 playerPosTop < enemyPosBottom &&
                 playerPosBottom > enemyPosTop &&
@@ -285,26 +278,28 @@ function intervals() {
                 //alert('Столкновение')
             }
 
+
+            // попадание в противника (муравьёв)
             let bullets = document.querySelectorAll('.bullet');
 
-            // попадание в противника
             bullets.forEach(bullet => {
 
-                let direction = bullet.getAttribute('direction');
+                // let direction = bullet.getAttribute('direction');
 
-                if (['top', 'left', 'right'].includes(direction)) {
+                // if (['top', 'left', 'right'].includes(direction)) {
                     if (
                         bullet.getBoundingClientRect().top < enemy.getBoundingClientRect().bottom &&
                         bullet.getBoundingClientRect().bottom > enemy.getBoundingClientRect().top &&
                         bullet.getBoundingClientRect().right > enemy.getBoundingClientRect().left &&
                         bullet.getBoundingClientRect().left < enemy.getBoundingClientRect().right
                     ) {
-                        enemy.parentNode.removeChild(enemy);
-                        bullet.parentNode.removeChild(bullet);
-                        points += 1;
-                        document.querySelector('.points').innerText = points;
+                          enemy.parentNode.removeChild(enemy);
+
+                          bullet.parentNode.removeChild(bullet);
+                          points += 1;
+                          document.querySelector('.points').innerText = points;
                     }
-                }
+                // }
             });
 
             // попадание клешни в монстра
@@ -343,12 +338,14 @@ function intervals() {
 
             });*/
 
+    // направление движения монстра --------------
             let direction = enemy.getAttribute('direction');
-
             switch (direction) {
                 case 'right':
-                    if (enemy.getBoundingClientRect().left <= 0) {
+                    // if (enemy.getBoundingClientRect().left <= 0) {  // пофиксил ошибку в консоле => муровьи дважды удалялись
+                    if (enemy.getBoundingClientRect().left > gameZone.getBoundingClientRect().width) {
                         enemy.parentNode.removeChild(enemy);
+                        // console.log('за пределами поля', enemy.parentNode.removeChild(enemy));
                     } else {
                         enemy.style.left = enemy.getBoundingClientRect().left - 3 + 'px';
                         enemy.style.top = enemy.getBoundingClientRect().top + 1 + 'px';
@@ -376,6 +373,7 @@ function intervals() {
                      }
                      break;*/
             }
+    // направление движения монстра --------------
 
             // if (enemy.getBoundingClientRect().right >= gameZone.getBoundingClientRect().width) {
             //     enemy.parentNode.removeChild(enemy);
@@ -567,32 +565,8 @@ function intervals() {
                 playerPosRight > treePosLeft &&
                 playerPosLeft < treePosRight
             ) {
-                // next();
-
                 player.y = player.y + player.tiltAngleY + 10;
                 player.x = player.x - player.tiltAngleX + 10;
-
-// ----------------------
-                /*function changeDirection(playerY, playerX) {
-                    // let y, x;
-                    if (playerY === player.y + player.tiltAngleY && playerX === player.x - player.tiltAngleX) {
-                        playerY += player.tiltAngleY;
-                        playerX -= player.tiltAngleX;
-                        // console.log('y', y);
-                        // console.log('x', x);
-                    }
-                    return console.log([playerY, playerX]);
-                }
-                changeDirection(player.y, player.x);*/
-// ----------------------
-                /*console.log('Дерево');
-                console.log('Y', player.y);
-                console.log('X', player.x);*/
-                // clearInterval(ints.run)
-               /* player.y -= player.tiltAngleY;
-                player.el.style.top = `${player.y}px`;
-                player.x += player.tiltAngleX;
-                player.el.style.left = `${player.x}px`;*/
             }
         });
 
@@ -613,32 +587,8 @@ function intervals() {
                 playerPosRight > treePosLeft &&
                 playerPosLeft < treePosRight
             ) {
-                // next();
-
                 player.y = player.y - player.tiltAngleY - 10;
                 player.x = player.x - player.tiltAngleX -10;
-
-// ----------------------
-                /*function changeDirection(playerY, playerX) {
-                    // let y, x;
-                    if (playerY === player.y + player.tiltAngleY && playerX === player.x - player.tiltAngleX) {
-                        playerY += player.tiltAngleY;
-                        playerX -= player.tiltAngleX;
-                        // console.log('y', y);
-                        // console.log('x', x);
-                    }
-                    return console.log([playerY, playerX]);
-                }
-                changeDirection(player.y, player.x);*/
-// ----------------------
-                /*console.log('Дерево');
-                console.log('Y', player.y);
-                console.log('X', player.x);*/
-                // clearInterval(ints.run)
-                /* player.y -= player.tiltAngleY;
-                 player.el.style.top = `${player.y}px`;
-                 player.x += player.tiltAngleX;
-                 player.el.style.left = `${player.x}px`;*/
             }
         });
 
@@ -657,6 +607,7 @@ function intervals() {
                     bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
                 ) {
                     next();
+                    // next();
                     // bullet.parentNode.removeChild(bullet);
                 }
             } else {
@@ -666,6 +617,7 @@ function intervals() {
                     bullet.getBoundingClientRect().left < player.el.getBoundingClientRect().right
                 ) {
                     next();
+                    // next();
                     // bullet.parentNode.removeChild(bullet);
                 }
             }
