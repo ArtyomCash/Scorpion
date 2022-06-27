@@ -37,11 +37,13 @@
 }
 .level-life {
     position: absolute;
-    top: 25px;
+    top: 19px;
     left: 115px;
-    width: 90px;
-    height: 20px;
-    background-color: green;
+    width: 50px;
+    height: 40px;
+    background: url(../sprites/scorpion-right_2shadow.png) 0 0 no-repeat;
+    background-size: contain;
+    transform: rotate(12deg);
 }
 .info {
     position: absolute;

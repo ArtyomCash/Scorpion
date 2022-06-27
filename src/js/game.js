@@ -22,6 +22,8 @@ function gameOver() {
     let start = document.getElementById ('game');
     start.style.display = 'block';
 
+    document.getElementById("oneLive").remove();
+
     clearInterval(ints.run);
     clearInterval(ints.bullet);
     clearInterval(ints.generateEnemy);
@@ -116,20 +118,27 @@ function init() {
     player.el = document.querySelector('.player');
 
     // уровень жизни персонажа
-    let liveLevel = document.querySelector('.level-life');
+    let info = document.querySelector('.info');
+    let levelLife = document.querySelector('.level-life');
     switch (player.life) {
         case 3:
-            liveLevel.style.width = '90px';
+            // liveLevel.style.width = '60px';
+            // document.querySelector('.level-life').innerHTML = `<img src="src/sprites/heart-1.png" class="life__image">`;
+            info.innerHTML += `<div id="oneLive" class="level-life" style="top: 19px; left: 115px"></div>`;
+            info.innerHTML += `<div id="twoLive" class="level-life" style="top: 19px; left: 190px"></div>`;
+            info.innerHTML += `<div id="threeLive" class="level-life" style="top: 19px; left: 265px"></div>`;
             break;
         case 2:
-            // document.querySelector('.level-life').innerHTML = `<img src="src/sprites/heart-1.png" class="life__image">`;
-            liveLevel.style.width = '60px';
+            document.getElementById("threeLive").remove();
+            console.log('2 жизни');
             break;
         case 1:
-            liveLevel.style.width = '30px';
+            document.getElementById("twoLive").remove();
+            console.log('1 жизнь');
             break;
         case 0:
-            liveLevel.style.width = '0px';
+            // document.getElementById("oneLive").remove();
+            console.log('0 жизни');
             next();
             break;
     }
