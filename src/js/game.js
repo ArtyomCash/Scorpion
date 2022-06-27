@@ -72,44 +72,45 @@ function next() {
 
     if (player.life === 0) {
         gameOver();
+    } else {
+        clearInterval(ints.enemy);
+        clearInterval(ints.run);
+        clearInterval(ints.bullet);
+        clearInterval(ints.generateEnemy);
+        clearInterval(ints.enemyBullet);
+        clearInterval(ints.checkEnemyBulletForPlayer);
+        clearInterval(ints.enemyShots);
+        clearInterval(ints.scorpionClaw);
+
+        let scorpionClaw = document.querySelectorAll('.scorpion-claw');
+
+        scorpionClaw.forEach((scorpionClaws) => {
+            scorpionClaws.parentNode.removeChild(scorpionClaws);
+        });
+
+        let enemies = document.querySelectorAll('.enemy');
+
+        enemies.forEach((enemy) => {
+            enemy.parentNode.removeChild(enemy);
+        });
+
+        let enemyBullets = document.querySelectorAll('.enemy-bullet');
+
+        enemyBullets.forEach((bullet) => {
+            bullet.parentNode.removeChild(bullet);
+        });
+
+        let bullets = document.querySelectorAll('.bullet');
+
+        bullets.forEach((bullet) => {
+            bullet.parentNode.removeChild(bullet);
+        });
+
+        player.el.parentNode.removeChild(player.el);
+
+        game();
     }
 
-    clearInterval(ints.enemy);
-    clearInterval(ints.run);
-    clearInterval(ints.bullet);
-    clearInterval(ints.generateEnemy);
-    clearInterval(ints.enemyBullet);
-    clearInterval(ints.checkEnemyBulletForPlayer);
-    clearInterval(ints.enemyShots);
-    clearInterval(ints.scorpionClaw);
-
-    let scorpionClaw = document.querySelectorAll('.scorpion-claw');
-
-    scorpionClaw.forEach((scorpionClaws) => {
-        scorpionClaws.parentNode.removeChild(scorpionClaws);
-    });
-
-    let enemies = document.querySelectorAll('.enemy');
-
-    enemies.forEach((enemy) => {
-        enemy.parentNode.removeChild(enemy);
-    });
-
-    let enemyBullets = document.querySelectorAll('.enemy-bullet');
-
-    enemyBullets.forEach((bullet) => {
-        bullet.parentNode.removeChild(bullet);
-    });
-
-    let bullets = document.querySelectorAll('.bullet');
-
-    bullets.forEach((bullet) => {
-        bullet.parentNode.removeChild(bullet);
-    });
-
-    player.el.parentNode.removeChild(player.el);
-
-    game();
 }
 
 function init() {
@@ -184,46 +185,20 @@ function intervals() {
         let bullets = document.querySelectorAll('.bullet');
         // bullets.style.left = '500px';
         bullets.forEach((bullet) => {
-            // let direction = bullet.getAttribute('direction');
 
-            // switch (direction) {
-                /*case 'top':
-                    if (bullet.getBoundingClientRect().top < 0) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.top = bullet.getBoundingClientRect().top - bulletSpeed + 'px';
-                    }
-                    break;*/
-                // case 'right':
                     if (bullet.getBoundingClientRect().right > gameZone.getBoundingClientRect().width) {
                         bullet.parentNode.removeChild(bullet);
                     } else {
                         bullet.style.left = bullet.getBoundingClientRect().left + bulletSpeed + 'px';
                         bullet.style.top = bullet.getBoundingClientRect().top + 6 - bulletSpeed + 'px';
                     }
-                    // break;
-                /*case 'bottom':
-                    if (bullet.getBoundingClientRect().bottom > gameZone.getBoundingClientRect().height) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.top = bullet.getBoundingClientRect().top + bulletSpeed + 'px';
-                    }
-                    break;
-                case 'left':
-                    if (bullet.getBoundingClientRect().left < 0) {
-                        bullet.parentNode.removeChild(bullet);
-                    } else {
-                        bullet.style.left = bullet.getBoundingClientRect().left - bulletSpeed + 'px';
-                    }
-                    break;*/
-            // }
+
         })
     }, fps);
     ints.enemyBullet = setInterval(() => {
         let bullets = document.querySelectorAll('.enemy-bullet');
         bullets.forEach((bullet) => {
             let direction = bullet.getAttribute('direction');
-
             switch (direction) {
                 case 'left':
                     if (bullet.getBoundingClientRect().left < 0) {
@@ -234,7 +209,6 @@ function intervals() {
                     }
                     break;
             }
-
             let scorpionClaw = document.querySelectorAll('.scorpion-claw');
             scorpionClaw.forEach((claw) => {
 
@@ -277,8 +251,6 @@ function intervals() {
                 next();
                 //alert('Столкновение')
             }
-
-
             // попадание в противника (муравьёв)
             let bullets = document.querySelectorAll('.bullet');
 
