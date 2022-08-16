@@ -332,18 +332,18 @@ function intervals() {
         switch (direction) {
             case 1: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 750}px;
+                top: ${gameZone.getBoundingClientRect().height - player.h - 850}px;
                 left: ${gameZone.getBoundingClientRect().width - player.w - 600}px;" direction="right"></div>`;
                 break;
             case 2: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 680}px;
-                left: ${gameZone.getBoundingClientRect().width - player.w - 400}px;" direction="right"></div>`;
+                top: ${gameZone.getBoundingClientRect().height - player.h - 780}px;
+                left: ${gameZone.getBoundingClientRect().width - player.w - 320}px;" direction="right"></div>`;
                 break;
             case 3: //Left
                 gameZone.innerHTML += `<div class="enemy" style=" 
-                top: ${gameZone.getBoundingClientRect().height - player.h - 588}px;
-                left: ${gameZone.getBoundingClientRect().width - player.w - 250}px;" direction="right"></div>`;
+                top: ${gameZone.getBoundingClientRect().height - player.h - 650}px;
+                left: ${gameZone.getBoundingClientRect().width - player.w - 130}px;" direction="right"></div>`;
                 break;
         }
 
