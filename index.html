@@ -2,10 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game Tanks</title>
+    <title>Game Scorpion</title>
     <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body class="game-zone">
+    <div id="game" class="game-over">
+        <h1 class="game-title">Game over</h1>
+        <button class="game-start-btn" type="button" onclick="startGame()">Start</button>
+    </div>
+    <article class="info">
+<!--        <h2>Имя игрока: <span class="player-name"></span></h2>-->
+<!--        <h2 class="life">Жизнь: <span class="level-life"></span></h2>-->
+        <h2 class="life">Жизнь: </span></h2>
+        <h2>Колличество очков: <span class="points">0</span></h2>
+        <h2>Заблокированные атаки: <span class="attack">0</span></h2>
+    </article>
     <div class="tree" style="left: 0; top: 340px"></div>
     <div class="tree" style="left: 117px; top: 302px"></div>
     <div class="tree" style="left: 231px; top: 264px"></div>
@@ -19,16 +30,16 @@
 
 <!--    <div class="tree" style="left: 875px; top: 512px"></div>-->
 
-    <div class="tree-right" style="left: 830px; top: 816px"></div>
-    <div class="tree-right" style="left: 938px; top: 679px"></div>
-    <div class="tree-right" style="left: 1037px; top: 549px"></div>
-    <div class="tree-right" style="left: 1129px; top: 418px"></div>
-    <div class="tree-right" style="left: 1222px; top: 297px"></div>
-    <div class="tree-right" style="left: 1323px; top: 173px"></div>
-    <div class="tree-right" style="left: 1409px; top: 45px"></div>
-    <div class="tree-right" style="left: 1490px; top: -80px"></div>
-    <div class="tree-right" style="left: 1578px; top: -212px"></div>
-    <div class="tree-right" style="left: 1673px; top: -340px"></div>
+    <div class="tree-right" style="left: 954px; top: 861px"></div>
+    <div class="tree-right" style="left: 1029px; top: 736px"></div>
+    <div class="tree-right" style="left: 1100px; top: 603px"></div>
+    <div class="tree-right" style="left: 1158px; top: 474px"></div>
+    <div class="tree-right" style="left: 1268px; top: 330px"></div>
+    <div class="tree-right" style="left: 1358px; top: 196px"></div>
+    <div class="tree-right" style="left: 1439px; top: 66px"></div>
+    <div class="tree-right" style="left: 1519px; top: -65px"></div>
+    <div class="tree-right" style="left: 1601px; top: -200px"></div>
+    <div class="tree-right" style="left: 1688px; top: -334px"></div>
     <div class="tree-right" style="left: 1761px; top: -468px"></div>
 
 <script src="src/js/game.js"></script>

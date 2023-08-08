@@ -4,13 +4,52 @@
     padding: 0;
     margin: 0;
     /*background-image: url(../sprites/back.png);*/
-    background-image: url(../sprites/road_3_1980.png);
+    background-image: url(../sprites/scorpion_bg_4.png);
     width: 100%;
     height: 100%;
     background-size: cover;
     overflow: hidden;
 }
-
+.game-over {
+    position: absolute;
+    z-index: 2;
+    top: 41%;
+    left: 37%;
+    width: 280px;
+    height: 135px;
+    background-color: green;
+    border-radius: 16px;
+    box-shadow: 10px 5px 5px #a3ff3d;
+}
+.game-over {
+    display: none;
+}
+.game-title {
+    text-align: center;
+}
+.game-start-btn {
+    display: flex;
+    margin: 0 auto;
+    cursor: pointer;
+}
+.player-name {
+    position: absolute;
+}
+.level-life {
+    position: absolute;
+    top: 19px;
+    left: 115px;
+    width: 50px;
+    height: 40px;
+    background: url(../sprites/scorpion-right_2shadow.png) 0 0 no-repeat;
+    background-size: contain;
+    transform: rotate(12deg);
+}
+.info {
+    position: absolute;
+    top: 0;
+    left: 50px;
+}
 .player {
     position: absolute;
     width: 97px;
